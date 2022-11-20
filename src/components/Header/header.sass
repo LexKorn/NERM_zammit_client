@@ -1,0 +1,112 @@
+@import '../../style/style.sass'
+    
+.header
+    margin: 10px 40px 0
+    &__info
+        display: flex
+        justify-content: space-between
+        margin-top: 10px
+        color: $gray-color        
+    &__logo
+        &_img
+            height: 50px
+        &_text
+            font-size: 24px
+            font-weight: bold
+            margin: 0
+        &_link
+            text-decoration: none
+            &:hover, &:visited, &:link, &:active
+                color: $gray-color
+                text-decoration: none
+    &__contacts
+        text-align: right
+        &_title
+            margin-bottom: 0
+        &_phone
+            font-size: 18px
+            line-height: 21px
+            margin-bottom: 0
+        &_email
+            font-size: 18px
+            line-height: 21px
+            color: $gray-color
+            text-decoration: none
+            &:hover
+                font-weight: bold
+                color: $gray-color
+    &__menu
+        height: 40px
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 10px auto 0
+        list-style-type: none
+        &_item
+            a
+                display: block
+                padding: 0 30px
+                font-size: 20px
+                font-weight: bold
+                &:link, &:visited
+                    color: $gray-color
+                    text-decoration: none
+                &:hover, &:active
+                    color: $main-color
+
+
+@media (max-width: 992px) 
+    .header
+        &__nav 
+            display: block
+            position: absolute
+            top: 90px
+            left: 0
+            height: 100%
+            width: 100%
+            background-color: #fff
+            z-index: 90
+            transition: all 0.4s ease
+            left:-100%
+            &.open-menu
+                left: 0
+        &__menu
+            display: block
+            &_item
+                margin: 30px 0px 30px 33px
+                font-size: 14px
+        &__menu-burger
+            position: relative
+            width: 40px
+            height: 35px
+            display: block
+            margin-left: 10px
+            z-index: 100
+            span, &:after, &:before
+                height: 3px
+                width: 100%
+                position: absolute
+                background: #515758
+                margin: 0 auto
+            span
+                top: 16px
+            &:after, &:before
+                content: ''
+            &:after
+                bottom: 5px	
+            &:before
+                top: 5px
+            &.open-menu
+                span
+                    opacity:0 
+                transition: 0.5s
+                &:after
+                    transform: rotate(-38deg)
+                    bottom: 16px
+                    transition: 0.4s
+                &:before
+                    transform: rotate(38deg)
+                    top: 16px
+                    transition: 0.4s
+    .fixed-pade 
+        overflow: hidden
