@@ -30,7 +30,31 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 {project.task} <br/>
                 {project.location}
                 <div className="modal-project">
-                    <Slider height={390} slide1={project.photos[0]} slide2={project.photos[1]} />
+                    {project.photos && <Slider height={400} slide1={project.photos[0]} slide2={project.photos[1]} />}
+                    {project.info && <div className="modal-project__info">
+                        <div className='modal-project__info_1'>Заказчик:</div>
+                        <div className='modal-project__info_1'>{project.info.customer}</div>
+                        <div className='modal-project__info_2'>Генеральный проектировщик:</div>
+                        <div className='modal-project__info_2'>{project.info.designer}</div>
+                        <div className='modal-project__info_1'>Сроки выполнения:</div>
+                        <div className='modal-project__info_1'>{project.info.period}</div>
+                        <div className='modal-project__info_2'>Объемы проектирования:</div>
+                        <div className='modal-project__info_2'>
+                            <ul className='modal-project__info_list'>
+                                {project.info.volumes.map(item => 
+                                    <li>{item}</li>
+                                )}
+                            </ul>
+                        </div>
+                        <div className='modal-project__info_1'>Проектные данные:</div>
+                        <div className='modal-project__info_1'>
+                            <ul className='modal-project__info_list'>
+                                {project.info.information.map(item => 
+                                    <li>{item}</li>
+                                )}
+                            </ul>
+                        </div>
+                    </div> }
                 </div>
             </Modal.Body>
             <Modal.Footer>

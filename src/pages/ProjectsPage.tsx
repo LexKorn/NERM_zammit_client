@@ -46,7 +46,7 @@ const ProjectsPage: React.FC = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const [project, setProject] = useState<IProject>({} as IProject);
 
-    const clickHandler = (project: IProject) => {
+    const handler = (project: IProject) => {
         setVisible(true);
         setProject(project);
     };
@@ -65,7 +65,7 @@ const ProjectsPage: React.FC = () => {
                         <div className="project__container">
                             {testProjects.filter((project: IProject) => project.category === Categories.CULTURES)
                                 .map((item: IProject) => 
-                                    <div className='project__item' key={item.id} onClick={() => clickHandler(item)}>
+                                    <div className='project__item' key={item.id} onClick={() => handler(item)} >
                                         <img src={item.photos[0]} alt="photo" className='project__item_photo' />
                                         <div className='project__item_name'>{item.name}</div>
                                     </div>
@@ -79,7 +79,7 @@ const ProjectsPage: React.FC = () => {
                     <Accordion.Body>
                         {testProjects.filter(project => project.category === Categories.MFC)
                             .map(item => 
-                                <div className='project__item' key={item.id}>
+                                <div className='project__item' key={item.id} onClick={() => handler(item)} >
                                     <img src={item.photos[1]} alt="photo" className='project__item_photo' />
                                     <div className='project__item_name'>{item.name}</div>
                                 </div>
