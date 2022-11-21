@@ -17,13 +17,13 @@ const MainContacts: React.FC = () => {
                     <div>Web: <a href="http://ib-zammit.ru">www.ib-zammit.ru</a></div>
                 </div>
                 <div className='contacts__de'>
-                    <div className="contacts__header">Германия</div>
+                    {/* <div className="contacts__header">Германия</div>
                     <div>Ingenieurbüro Zammit GmbH</div>
                     <div>An der Heerstraße 50 38228 Salzgitter</div>
                     <div>Тел.: +49 5341 8599 900</div>
                     <div></div>
                     <div>Факс: +49 5341 8599 909</div>
-                    <div>Web: <a href="http://ib-zammit.de">www.ib-zammit.de</a></div>
+                    <div>Web: <a href="http://ib-zammit.de">www.ib-zammit.de</a></div> */}
                 </div>
             </div>
 

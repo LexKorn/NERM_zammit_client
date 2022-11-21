@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE } from "../../utils/consts";
 import logo from '../../assets/icons/ib-zammit_logo.jpg';
@@ -8,6 +8,17 @@ import './header.sass';
 
 
 const Header: React.FC = () => {
+    const location = useLocation();
+    const [classMenu, setClassMenu] = useState<string>('');
+
+    useEffect(() => {
+        setClassMenu('');
+    }, [location.pathname]);
+
+    const menuHandler = () => {
+        classMenu === '' ? setClassMenu('open-menu') : setClassMenu('');
+    };
+
     return (
         <div className='header'>
             <div className="header__info">
@@ -19,16 +30,16 @@ const Header: React.FC = () => {
                 </div>    
                 <div className="header__contacts">
                     <h3 className="header__contacts_title">Контакты</h3>
-                    <p className="header__contacts_phone">+7 495 926 23 43</p>
-                    <a className="header__contacts_email" href="mailto:moskau@ib-zammit.ru">moskau@ib-zammit.ru</a>
+                    <p className="header__contacts_text">+7 495 926 23 43</p>
+                    <a className="header__contacts_text email" href="mailto:moskau@ib-zammit.ru">moskau@ib-zammit.ru</a>
                 </div>
             </div>
 
-            <div className="header__menu-burger">
+            <div className={"header__menu-burger" + ' ' + classMenu} onClick={() => menuHandler()}>
                 <span></span>
             </div>
 
-            <nav className="header__nav">
+            <nav className={'header__nav' + ' ' + classMenu}>
                 <ul className="header__menu">
                     <li className="header__menu_item"><NavLink to={MAIN_ROUTE} className="active">О КОМПАНИИ</NavLink></li>
                     <li className="header__menu_item"><NavLink to={SYSTEMS_ROUTE} >ИНЖЕНЕРНЫЕ СИСТЕМЫ</NavLink></li>
