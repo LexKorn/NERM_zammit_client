@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {Helmet} from "react-helmet";
 import Container from 'react-bootstrap/Container';
 
-import List from '../components/List/List';
-import VacancyItem from '../components/VacancyItem';
-import photo from '../assets/img/vacancy.webp';
-import { IVacancy } from '../types/types';
+import List from '../../components/List/List';
+import VacancyItem from '../../components/VacancyItem';
+import photo from '../../assets/img/vacancy.webp';
+import { IVacancy } from '../../types/types';
 
 import './vacancyPage.sass';
-import ModalVacancy from '../components/Modals/ModalVacancy';
+import ModalVacancy from '../../components/Modals/ModalVacancy';
 
 
 const VacancyPage: React.FC = () => {

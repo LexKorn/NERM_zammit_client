@@ -2,14 +2,14 @@ import React from 'react';
 import {Tab, Nav, Row, Col, Container} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
-import {first, second, third, fourth, fifth, sixth, seventh} from '../assets/img/servises/index';
+import {first, second, third, fourth, fifth, sixth, seventh} from '../../assets/img/servises/index';
 
-import './servises.sass';
+import './servisesPage.sass';
 
 
 const ServisesPage: React.FC = () => {
     return (
-        <Container style={{flex: 1}}>
+        <div className='servises' style={{flex: 1}}>
             <Helmet>
                 <title>Цаммит. Услуги</title>
                 <meta name="description" content="Цаммит. Услуги" />
@@ -17,27 +17,27 @@ const ServisesPage: React.FC = () => {
             
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                 <Row>
-                    <Col sm={3}>
+                    <Col sm={3} className='tabs__col'>
                     <Nav variant="pills" className="flex-column">
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="first">Разработка проектной и рабочей документации</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="second">Технические консультации</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="third">Сбор данных и подготовка ТЗ</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="fourth">Экспертиза проектов</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="fifth">Подготовка тендерной документации</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="sixth">Авторский и технический надзор</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className='tabs__item'>
                             <Nav.Link eventKey="seventh">Сдача объекта в эксплуатацию</Nav.Link>
                         </Nav.Item>
                     </Nav>
@@ -76,7 +76,7 @@ const ServisesPage: React.FC = () => {
                     </Col>
                 </Row>
             </Tab.Container>
-        </Container>
+        </div>
     );
 };
 

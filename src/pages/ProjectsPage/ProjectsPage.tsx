@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {Accordion, Container} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
-import { IProject, Categories } from '../types/types';
-import ModalProject from '../components/Modals/ModalProject/ModalProject';
-import {ice1, kinoEkrn} from '../assets/img/projects/index';
+import { IProject, Categories } from '../../types/types';
+import ModalProject from '../../components/Modals/ModalProject/ModalProject';
+import {ice1, kinoEkrn} from '../../assets/img/projects/index';
 
 import './projectsPage.sass';
 

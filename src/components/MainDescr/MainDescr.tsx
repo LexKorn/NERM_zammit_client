@@ -50,11 +50,6 @@ const MainDescr: React.FC = () => {
                 size="xl"
                 centered
             >
-                {/* <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                    Cвидетельство СРО
-                </Modal.Title>
-                </Modal.Header> */}
                 <Modal.Body>
                     <img className="description__license_large" src={license} alt="license" />
                 </Modal.Body>

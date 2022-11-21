@@ -9,7 +9,7 @@ import MainContacts from '../components/MainContacts/MainContacts';
 
 const MainPage: React.FC = () => {
     return (
-        <Container className="main" style={{flex: 1}}>
+        <div className="main" style={{flex: 1}}>
             <Helmet>
                 <title>Инженерное бюро "Цаммит"</title>
                 <meta name="description" content="Инженерное бюро Цаммит" />
@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
             {/* <MainSlider /> */}
             <MainDescr />
             <MainContacts />
-        </Container>
+        </div>
     );
 };
 

@@ -41,11 +41,31 @@ const Header: React.FC = () => {
 
             <nav className={'header__nav' + ' ' + classMenu}>
                 <ul className="header__menu">
-                    <li className="header__menu_item"><NavLink to={MAIN_ROUTE} className="active">О КОМПАНИИ</NavLink></li>
-                    <li className="header__menu_item"><NavLink to={SYSTEMS_ROUTE} >ИНЖЕНЕРНЫЕ СИСТЕМЫ</NavLink></li>
-                    <li className="header__menu_item"><NavLink to={SERVISES_ROUTE} >УСЛУГИ</NavLink></li>
-                    <li className="header__menu_item"><NavLink to={PROJECT_ROUTE} >ПРОЕКТЫ</NavLink></li>
-                    <li className="header__menu_item"><NavLink to={VACANCY_ROUTE} >ВАКАНСИИ</NavLink></li>
+                    <li className="header__menu_item">
+                        <NavLink to={MAIN_ROUTE} className={location.pathname === MAIN_ROUTE ? "active" : ''} >
+                            О КОМПАНИИ
+                        </NavLink>
+                    </li>
+                    <li className="header__menu_item">
+                        <NavLink to={SYSTEMS_ROUTE} className={location.pathname === SYSTEMS_ROUTE ? "active" : ''} >
+                            ИНЖЕНЕРНЫЕ СИСТЕМЫ
+                        </NavLink>
+                    </li>
+                    <li className="header__menu_item">
+                        <NavLink to={SERVISES_ROUTE} className={location.pathname === SERVISES_ROUTE ? "active" : ''} >
+                            УСЛУГИ
+                        </NavLink>
+                    </li>
+                    <li className="header__menu_item">
+                        <NavLink to={PROJECT_ROUTE} className={location.pathname === PROJECT_ROUTE ? "active" : ''} >
+                            ПРОЕКТЫ
+                        </NavLink>
+                    </li>
+                    <li className="header__menu_item">
+                        <NavLink to={VACANCY_ROUTE} className={location.pathname === VACANCY_ROUTE ? "active" : ''} >
+                            ВАКАНСИИ
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </div>

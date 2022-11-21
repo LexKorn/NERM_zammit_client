@@ -3,22 +3,36 @@
 .contacts
     margin: 20px 10% 0
     &__title
-        margin-top: 20px
-        margin-bottom: 3px
         font-size: 18px
         line-height: 1.2
         font-weight: 700
     &__container
         display: grid
-        grid-template-columns: repeat(2, 300px)
-        gap: 20px
+        grid-template-columns: 300px
         margin-top: 10px
         margin-bottom: 20px
+        font-size: 16px
     &__header
         font-weight: bold
     a
         text-decoration: none
         color: black
+        font-size: 16px
         &:hover
             font-weight: bold
             color: $main-color
+
+@media (max-width: 576px)
+    .contacts
+        margin: 20px 5% 0
+
+@media (max-width: 425px)
+    .contacts
+        &__title
+            font-size: 16px
+        &__container
+            grid-template-columns: 250px
+            margin-top: 0
+            font-size: 14px
+        a
+            font-size: 14px
