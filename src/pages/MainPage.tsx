@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import {Helmet} from "react-helmet";
 
 import MainSlider from '../components/MainSlider/MainSlider';
@@ -15,8 +14,8 @@ const MainPage: React.FC = () => {
                 <meta name="description" content="Инженерное бюро Цаммит" />
             </Helmet>
             <MainSlider />
-            {/* <MainDescr />
-            <MainContacts /> */}
+            <MainDescr />
+            <MainContacts />
         </div>
     );
 };

@@ -6,23 +6,23 @@
         display: flex
         padding: 0 20px
     &__slide
-        height: 35vh
-        border-radius: 10px
-        margin: 5px
-        cursor: pointer
+        height: 35vh        
+        margin-right: 10px
+        // cursor: pointer
         color: #ffff
-        flex: 1
-        background-size: cover
-        background-position: center
-        background-repeat: no-repeat
-        // background-image: url('../../assets/img/main/projects_kino_ekran.webp')
+        flex: 1        
         position: relative
-        transition: all 1000ms ease-in-out
+        transition: all 1s 
+        img
+            height: 35vh
+            width: 100%
+            object-fit: cover
+            border-radius: 10px
         &.active
             flex: 12
         h3
             display: none
-            position:absolute
+            position: absolute
             font-size: 20px
             bottom: 20px
             left: 20px
@@ -30,9 +30,12 @@
         &.active h3 
             display: block
             text-shadow: #000 2px 2px 1px
-    &__test
-        height: 35vh
-        background-size: cover
-        background-position: center
-        background-repeat: no-repeat
-        // background-image: url('../../assets/img/main/projects_kino_ekran.webp')
+    &__carousel
+        display: none
+
+@media (max-width: 767px)
+    .slider
+        &__container
+            display: none
+        &__carousel
+            display: block

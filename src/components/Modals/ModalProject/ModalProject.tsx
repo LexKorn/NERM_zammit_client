@@ -21,7 +21,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
             size="xl"
             centered
             >
-            <Modal.Header>
+            <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     {project.name}
                 </Modal.Title>
@@ -30,7 +30,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 {project.task} <br/>
                 {project.location}
                 <div className="modal-project">
-                    {project.photos && <Slider height={400} slide1={project.photos[0]} slide2={project.photos[1]} />}
+                    {project.photos && <Slider slide1={project.photos[0]} slide2={project.photos[1]} />}
                     {project.info && <div className="modal-project__info">
                         <div className='modal-project__info_1'>Заказчик:</div>
                         <div className='modal-project__info_1'>{project.info.customer}</div>

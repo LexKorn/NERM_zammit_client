@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE } from "../../utils/consts";
+import { MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE, ADMIN_ROUTE } from "../../utils/consts";
 import logo from '../../assets/icons/ib-zammit_logo.jpg';
 
 import './header.sass';
@@ -10,6 +10,9 @@ import './header.sass';
 const Header: React.FC = () => {
     const location = useLocation();
     const [classMenu, setClassMenu] = useState<string>('');
+
+    // const {user} = useContext(Context);
+    const isAuth: boolean = true;
 
     useEffect(() => {
         setClassMenu('');
@@ -66,6 +69,13 @@ const Header: React.FC = () => {
                             ВАКАНСИИ
                         </NavLink>
                     </li>
+                    {isAuth &&
+                        <li className="header__menu_item">
+                            <NavLink to={ADMIN_ROUTE} className={location.pathname === ADMIN_ROUTE ? "active" : ''} >
+                                АДМИНКА
+                            </NavLink>
+                        </li>
+                    }
                 </ul>
             </nav>
         </div>

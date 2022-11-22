@@ -19,7 +19,7 @@ const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
             size="lg"
             centered
             >
-            <Modal.Header>
+            <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     {vacancy.name}
                 </Modal.Title>

@@ -9,7 +9,7 @@ import { MAIN_ROUTE } from '../utils/consts';
 
 const AppRouter: React.FC = observer(() => { 
     // const {user} = useContext(Context);
-    const isAuth: boolean = false;
+    const isAuth: boolean = true;
 
     return (
         <Routes>
