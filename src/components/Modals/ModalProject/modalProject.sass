@@ -19,10 +19,17 @@
             padding-left: 10px
         &_list
             list-style-type: circle
-            padding-left: 0
+            padding-left: 10px
             margin-bottom: 0
 
 @media (max-width: 992px)
     .modal-project
         grid-template-columns: 100%
         gap: 20px
+
+@media (max-width: 425px)
+    .modal-project
+        &__info
+            font-size: 12px
+            &_1, &_2
+                padding-left: 0

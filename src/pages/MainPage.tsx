@@ -14,9 +14,9 @@ const MainPage: React.FC = () => {
                 <title>Инженерное бюро "Цаммит"</title>
                 <meta name="description" content="Инженерное бюро Цаммит" />
             </Helmet>
-            {/* <MainSlider /> */}
-            <MainDescr />
-            <MainContacts />
+            <MainSlider />
+            {/* <MainDescr />
+            <MainContacts /> */}
         </div>
     );
 };

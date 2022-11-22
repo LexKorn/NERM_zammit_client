@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 
-import { IVacancy } from '../types/types';
+import { IVacancy } from '../../types/types';
 
 import './vacancyItem.sass';
 

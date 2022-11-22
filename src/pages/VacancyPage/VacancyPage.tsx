@@ -3,7 +3,7 @@ import {Helmet} from "react-helmet";
 import Container from 'react-bootstrap/Container';
 
 import List from '../../components/List/List';
-import VacancyItem from '../../components/VacancyItem';
+import VacancyItem from '../../components/VacancyItem/VacancyItem';
 import photo from '../../assets/img/vacancy.webp';
 import { IVacancy } from '../../types/types';
 

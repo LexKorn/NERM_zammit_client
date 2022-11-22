@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
 import { IProject } from '../../../types/types';
-import Slider from '../../Slider';
+import Slider from '../../Slider/Slider';
 
 import './modalProject.sass';
 

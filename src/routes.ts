@@ -1,5 +1,5 @@
-import { ADMIN_ROUTE, MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE, NOTFOUND_ROUTE } from "./utils/consts";
-import { AdminPage, MainPage, ProjectsPage, ServisesPage, SystemsPage, VacancyPage, Page404 } from './pages';
+import { ADMIN_ROUTE, MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE } from "./utils/consts";
+import { AdminPage, MainPage, ProjectsPage, ServisesPage, SystemsPage, VacancyPage } from './pages';
 
 export const authRoutes = [
     {
@@ -28,9 +28,5 @@ export const publicRoutes = [
     {
         path: VACANCY_ROUTE,
         Component: VacancyPage
-    },
-    {
-        path: NOTFOUND_ROUTE,
-        Component: Page404
     }
 ];
