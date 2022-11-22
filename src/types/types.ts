@@ -34,3 +34,17 @@ export enum Categories {
     INDUSTRIES = 'Промышленные здания и сооружения',
     AVIA = 'Объекты авиационной инфраструктуры'
 };
+
+export interface IServise {
+    id: number;
+    title: string;
+    description: string;
+    cover: string;
+};
+
+export interface ISistem {
+    id: number;
+    title: string;
+    description: string;
+    photos: string[];
+};

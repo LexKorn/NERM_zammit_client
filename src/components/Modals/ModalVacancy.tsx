@@ -11,6 +11,8 @@ interface ModalVacancyProps {
 
 
 const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
+    // const {user} = useContext(Context);
+    const isAuth: boolean = true;
 
     return (
         <Modal
@@ -30,6 +32,12 @@ const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
                 <div><b>Условия:</b><br/>{vacancy.conditions}</div>
             </Modal.Body>
             <Modal.Footer>
+                {isAuth &&
+                    <div>
+                        <Button variant={"outline-danger "} onClick={onHide}>Удалить</Button>
+                        <Button variant={"outline-primary "} style={{marginLeft: 10}} onClick={onHide}>Обновить</Button>
+                    </div>
+                }
                 <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>
