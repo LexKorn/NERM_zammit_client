@@ -1,9 +1,19 @@
-export interface IVacancy {
+export enum Categories {
+    CULTURES = 'Объекты здравоохранения, образования, культуры и спорта',
+    MFC = 'Многофункциональные комплексы',
+    OFFICES = 'Офисные здания',
+    HOTELS = 'Отели',
+    RESIDENCES = 'Резиденции',
+    WILLAGES = 'Загородные резиденции',
+    INDUSTRIES = 'Промышленные здания и сооружения',
+    AVIA = 'Объекты авиационной инфраструктуры'
+};
+
+export interface IContacts {
     id: number;
-    name: string;
-    duty: string;
-    requirement: string;
-    conditions: string;
+    phone: string,
+    address: string,
+    link: string
 };
 
 export interface IInfo {
@@ -24,17 +34,6 @@ export interface IProject {
     info: IInfo;
 };
 
-export enum Categories {
-    CULTURES = 'Объекты здравоохранения, образования, культуры и спорта',
-    MFC = 'Многофункциональные комплексы',
-    OFFICES = 'Офисные здания',
-    HOTELS = 'Отели',
-    RESIDENCES = 'Резиденции',
-    WILLAGES = 'Загородные резиденции',
-    INDUSTRIES = 'Промышленные здания и сооружения',
-    AVIA = 'Объекты авиационной инфраструктуры'
-};
-
 export interface IServise {
     id: number;
     title: string;
@@ -42,9 +41,23 @@ export interface IServise {
     cover: string;
 };
 
-export interface ISistem {
+export interface ISlider {
+    id: number;
+    title: string;
+    photo: string;
+};
+
+export interface ISystem {
     id: number;
     title: string;
     description: string;
     photos: string[];
+};
+
+export interface IVacancy {
+    id: number;
+    name: string;
+    duties: string[];
+    requirements: string[];
+    conditions: string[];
 };

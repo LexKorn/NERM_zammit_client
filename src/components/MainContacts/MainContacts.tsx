@@ -10,8 +10,7 @@ const MainContacts: React.FC = () => {
                 <div className='contacts__ru'>
                     <div className="contacts__header">Российская Федерация</div>
                     <div>ООО «Инженерное бюро Цаммит»</div>
-                    <div>125040, Москва, 3-я ул. Ямского Поля, д. 28, оф. 2031</div>
-                    <div>Бизнес-центр "БИНОМ-СОД"</div>
+                    <div>125040, Москва, 3-я ул. Ямского Поля, д. 28, оф. 2031, Бизнес-центр "БИНОМ-СОД"</div>
                     <div>Телефон: +7 495 926 23 43</div>
                     <div>E-mail: <a href="mailto:moskau@ib-zammit.ru">moskau@ib-zammit.ru</a></div>
                     <div>Web: <a href="http://ib-zammit.ru">www.ib-zammit.ru</a></div>
