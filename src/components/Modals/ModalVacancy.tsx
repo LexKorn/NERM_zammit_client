@@ -27,9 +27,27 @@ const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div><b>Обязанности:</b><br/>{vacancy.duty}</div>
-                <div><b>Требования:</b><br/>{vacancy.requirement}</div>
-                <div><b>Условия:</b><br/>{vacancy.conditions}</div>
+                <div><b>Обязанности:</b>
+                    <ul>
+                        {vacancy.duties && vacancy.duties.map(item =>
+                            <li key={item.id}>{item.duty}</li>
+                        )}
+                    </ul>
+                </div>
+                <div><b>Требования:</b>
+                    <ul>
+                        {vacancy.requirements && vacancy.requirements.map(item =>
+                            <li key={item.id}>{item.requirement}</li>
+                        )}
+                    </ul>
+                </div>
+                <div><b>Условия:</b>
+                    <ul>
+                        {vacancy.conditions && vacancy.conditions.map(item =>
+                            <li key={item.id}>{item.condition}</li>
+                        )}
+                    </ul>
+                </div>
             </Modal.Body>
             <Modal.Footer>
                 {isAuth &&

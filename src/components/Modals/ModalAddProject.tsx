@@ -14,6 +14,9 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
     const [task, setTask] = useState<string>(''); 
     const [location, setLocation] = useState<string>('');    
     const [category, setCategory] = useState<string>(''); 
+    const [customer, setCustomer] = useState<string>('');    
+    const [designer, setDesigner] = useState<string>(''); 
+    const [period, setPeriod] = useState<string>(''); 
     // @ts-ignore
     const [photo, setPhoto] = useState<FileList>([]);
 
@@ -30,6 +33,10 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
         formData.append('task', task);
         formData.append('location', location);
         formData.append('category', category);
+        formData.append('customer', customer);
+        formData.append('designer', designer);
+        formData.append('period', period);
+
         for (let i = 0; i < photo.length; i++) {
             formData.append('photo', photo[i]);
         }
@@ -78,6 +85,24 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                         value={category}
                         onChange={e => setCategory(e.target.value)}
                         placeholder="Введите категорию проекта"
+                    />
+                    <Form.Control
+                        className="mt-3"
+                        value={customer}
+                        onChange={e => setCustomer(e.target.value)}
+                        placeholder="Введите заказчика"
+                    />
+                    <Form.Control
+                        className="mt-3"
+                        value={designer}
+                        onChange={e => setDesigner(e.target.value)}
+                        placeholder="Введите проектировщика / архитектора"
+                    />
+                    <Form.Control
+                        className="mt-3"
+                        value={period}
+                        onChange={e => setPeriod(e.target.value)}
+                        placeholder="Введите сроки выполнения"
                     />
                     <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
                     <Form.Control                        

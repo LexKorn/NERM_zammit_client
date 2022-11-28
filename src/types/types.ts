@@ -54,10 +54,28 @@ export interface ISystem {
     photos: string[];
 };
 
+export interface IVacancyCondition {
+    id: number;
+    vacancyId: number;
+    condition: string;
+};
+
+export interface IVacancyDuty {
+    id: number;
+    vacancyId: number;
+    duty: string;
+};
+
+export interface IVacancyRequirement {
+    id: number;
+    vacancyId: number;
+    requirement: string;
+};
+
 export interface IVacancy {
     id: number;
     name: string;
-    duties: string[];
-    requirements: string[];
-    conditions: string[];
+    conditions: IVacancyCondition[];
+    duties: IVacancyDuty[];
+    requirements: IVacancyRequirement[];    
 };

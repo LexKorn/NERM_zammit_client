@@ -57,11 +57,12 @@ const ModalAddSystem: React.FC<ModalAddSystemProps> = ({show, onHide}) => {
                         onChange={e => setTitle(e.target.value)}
                         placeholder="Введите название системы"
                     />
-                    <Form.Control
+                    <Form.Control as="textarea"
                         className="mt-3"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         placeholder="Введите описание системы"
+                        maxLength={700}
                     />
                     <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
                     <Form.Control                        

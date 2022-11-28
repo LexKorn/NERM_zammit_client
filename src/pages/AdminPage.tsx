@@ -32,7 +32,7 @@ const AdminPage: React.FC = () => {
                 className="mt-4 p-2 shadow"
                 onClick={() => setSystemVisible(true)}
                 >
-                Добавить систему
+                Добавить инженерную систему
             </Button>
             <Button 
                 variant={"outline-secondary"} 
@@ -54,6 +54,14 @@ const AdminPage: React.FC = () => {
                 onClick={() => setVacancyVisible(true)}
                 >
                 Добавить вакансию
+            </Button>
+            <Button 
+                variant={"secondary"} 
+                className="mt-4 p-2"
+                style={{width: 100}}
+                // onClick={() => setVacancyVisible(true)}
+                >
+                Выйти
             </Button>
             <ModalAddProject show={projectVisible} onHide={() => setProjectVisible(false)} />        
             <ModalAddSystem show={systemVisible} onHide={() => setSystemVisible(false)} />     
