@@ -1,36 +1,34 @@
 import React, {useState} from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
 
-import {createSystem} from '../../http/systemAPI';
+import {createServise} from '../../http/serviseAPI';
 
-interface ModalAddSystemProps {
+interface ModalAddServiseProps {
     show: boolean;
     onHide: () => void;
 };
 
 
-const ModalAddSystem: React.FC<ModalAddSystemProps> = ({show, onHide}) => {
+const ModalAddServise: React.FC<ModalAddServiseProps> = ({show, onHide}) => {
     const [title, setTitle] = useState<string>('');    
     const [description, setDescription] = useState<string>(''); 
     // @ts-ignore
-    const [photo, setPhoto] = useState<FileList>([]);
+    const [cover, setCover] = useState<File>(null);
 
     const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const files: FileList | null = e.target.files;
         if (files) {
-            setPhoto(files);
-        }        
+            setCover(files[0]);
+        } 
     };
 
-    const addSystem = () => {
+    const addServise = () => {
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
-        for (let i = 0; i < photo.length; i++) {
-            formData.append('photo', photo[i]);
-        }
+        formData.append('cover', cover);
 
-        createSystem(formData).then(() => {
+        createServise(formData).then(() => {
             onHide();
         });
     };
@@ -46,7 +44,7 @@ const ModalAddSystem: React.FC<ModalAddSystemProps> = ({show, onHide}) => {
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить новую систему
+                    Добавить новую услугу
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -55,29 +53,28 @@ const ModalAddSystem: React.FC<ModalAddSystemProps> = ({show, onHide}) => {
                         className="mt-3"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
-                        placeholder="Введите название системы"
+                        placeholder="Введите название услуги"
                     />
                     <Form.Control as="textarea"
                         className="mt-3"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
-                        placeholder="Введите описание системы"
+                        placeholder="Введите описание услуги"
                         maxLength={700}
                     />
                     <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
                     <Form.Control                        
                         type="file"
-                        multiple
                         onChange={selectFile}
                     />                     
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant={"outline-success "} onClick={addSystem}>Добавить</Button>
+                <Button variant={"outline-success "} onClick={addServise}>Добавить</Button>
                 <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>
     );
 };
 
-export default ModalAddSystem;
+export default ModalAddServise;

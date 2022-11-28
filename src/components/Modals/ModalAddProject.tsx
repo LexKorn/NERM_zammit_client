@@ -66,7 +66,7 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                         className="mt-3"
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        placeholder="Введите название проекта"
+                        placeholder="Введите название объекта"
                     />
                     <Form.Control
                         className="mt-3"
@@ -78,13 +78,13 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                         className="mt-3"
                         value={location}
                         onChange={e => setLocation(e.target.value)}
-                        placeholder="Введите местоположение проекта"
+                        placeholder="Введите местоположение объекта"
                     />
                     <Form.Control
                         className="mt-3"
                         value={category}
                         onChange={e => setCategory(e.target.value)}
-                        placeholder="Введите категорию проекта"
+                        placeholder="Введите категорию объекта"
                     />
                     <Form.Control
                         className="mt-3"

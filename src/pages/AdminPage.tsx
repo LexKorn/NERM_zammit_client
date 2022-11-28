@@ -3,6 +3,7 @@ import {Container, Button} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
 import ModalAddProject from '../components/Modals/ModalAddProject';
+import ModalAddServise from '../components/Modals/ModalAddServise';
 import ModalAddSystem from '../components/Modals/ModalAddSystem';
 import ModalAddVacancy from '../components/Modals/ModalAddVacancy';
 import ModalEditConacts from '../components/Modals/ModalEditConacts';
@@ -11,6 +12,7 @@ import ModalEditConacts from '../components/Modals/ModalEditConacts';
 const AdminPage: React.FC = () => {
     const [contactsVisible, setContactsVisible] = useState<boolean>(false);
     const [projectVisible, setProjectVisible] = useState<boolean>(false);
+    const [serviseVisible, setServiseVisible] = useState<boolean>(false);
     const [systemVisible, setSystemVisible] = useState<boolean>(false);
     const [vacancyVisible, setVacancyVisible] = useState<boolean>(false);
 
@@ -37,7 +39,7 @@ const AdminPage: React.FC = () => {
             <Button 
                 variant={"outline-secondary"} 
                 className="mt-4 p-2 shadow"
-                onClick={() => setVacancyVisible(true)}
+                onClick={() => setServiseVisible(true)}
                 >
                 Добавить услугу
             </Button>
@@ -64,6 +66,7 @@ const AdminPage: React.FC = () => {
                 Выйти
             </Button>
             <ModalAddProject show={projectVisible} onHide={() => setProjectVisible(false)} />        
+            <ModalAddServise show={serviseVisible} onHide={() => setServiseVisible(false)} /> 
             <ModalAddSystem show={systemVisible} onHide={() => setSystemVisible(false)} />     
             <ModalAddVacancy show={vacancyVisible} onHide={() => setVacancyVisible(false)} />
             <ModalEditConacts show={contactsVisible} onHide={() => setContactsVisible(false)} />

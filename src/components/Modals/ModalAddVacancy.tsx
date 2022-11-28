@@ -106,7 +106,7 @@ const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
                     />
 
                     <Button 
-                        className="mt-3"
+                        className="mt-3 w-100"
                         variant="outline-secondary"
                         onClick={addDuty}
                         >Добавить обязанности
@@ -131,7 +131,7 @@ const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
                     )}
 
                     <Button 
-                        className="mt-3"
+                        className="mt-3 w-100"
                         variant="outline-secondary"
                         onClick={addRequirement}
                         >Добавить требования
@@ -156,7 +156,7 @@ const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
                     )}
                     
                     <Button 
-                        className="mt-3"
+                        className="mt-3 w-100"
                         variant="outline-secondary"
                         onClick={addCondition}
                         >Добавить условия
