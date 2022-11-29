@@ -3,12 +3,66 @@ import {Accordion, Container} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
 import Slider from '../../components/Slider/Slider';
+import { ISystem } from '../../types/types';
 import {ad1, ad2, ad3, autp1, autp2, cool1, et1, et2, et3, ht1, ht2, it1, it2, it3, lt1, lt2, odn1, odn2, sa1, sa2} from '../../assets/img/systems/index';
 
 import './systemsPage.sass';
 
 
 const SystemsPage: React.FC = () => {
+    const systems: ISystem[] = [
+        {
+            id: 1,
+            title: 'Водоснабжение и канализация',
+            description: 'Система водоснабжения - это совокупность зданий, сооружений и инженерных сетей, предназначенных для приема воды из источника водозабора, ее подготовки и подачи потребителям. Система канализации - это специальная система трубопровода по сбору и отведению сточных вод до точки утилизации.',
+            photos: [
+                {
+                    id: 1,
+                    systemId: 1,
+                    photo: sa1
+                },
+                {
+                    id: 2,
+                    systemId: 1,
+                    photo: sa2
+                },
+            ]
+        },
+        {
+            id: 2,
+            title: 'АУПТ и противопожарный водопровод',
+            description: 'Внутренний противопожарный водопровод (ВПВ) – система обеспечения противопожарной безопасности внутри общественных зданий. Это автономный трубопровод, который обеспечивается разного рода техническим оснащением для обеспечение подачи воды к пожарным кранам.',
+            photos: [
+                {
+                    id: 3,
+                    systemId: 2,
+                    photo: autp1
+                },
+                {
+                    id: 4,
+                    systemId: 2,
+                    photo: autp2
+                },
+            ]
+        },{
+            id: 3,
+            title: 'Отопление и теплоснабжение',
+            description: 'Системы теплоснабжения – это комплекс технических устройств, обеспечивающих: приготовление теплоносителя (ТЭЦ, котельная), транспортировку теплоносителя (тепловые сети), распределение тепловой энергии к отдельным потребителям',
+            photos: [
+                {
+                    id: 5,
+                    systemId: 3,
+                    photo: ht1
+                },
+                {
+                    id: 6,
+                    systemId: 3,
+                    photo: ht2
+                },
+            ]
+        },
+    ];
+
     return (
         <Container className='systems' style={{flex: 1}}>
             <Helmet>
@@ -16,7 +70,16 @@ const SystemsPage: React.FC = () => {
                 <meta name="description" content="Цаммит. Инженерные системы" />
             </Helmet>
             <Accordion defaultActiveKey="10" flush style={{maxWidth: 900, margin: '0 auto'}}>
-                <Accordion.Item eventKey="0">
+                {systems && systems.map(item =>
+                    <Accordion.Item eventKey={`${item.id}`} key={item.id}>
+                        <Accordion.Header>{item.title}</Accordion.Header>
+                        <Accordion.Body>
+                            <Slider slide1={item.photos[0].photo} slide2={item.photos[1].photo} />
+                            <p className="systems__text">{item.description}</p>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                )}
+                {/* <Accordion.Item eventKey="0">
                     <Accordion.Header>Водоснабжение и канализация</Accordion.Header>
                     <Accordion.Body>
                         <Slider slide1={sa1} slide2={sa2} />
@@ -109,7 +172,7 @@ const SystemsPage: React.FC = () => {
                     <Accordion.Body>
                         <p className="systems__text">Энергоэффективность — эффективное использование энергетических ресурсов. Использование меньшего количества энергии для обеспечения того же уровня энергетического обеспечения зданий или технологических процессов на производстве.</p>
                     </Accordion.Body>
-                </Accordion.Item>
+                </Accordion.Item> */}
             </Accordion>
         </Container>
     );

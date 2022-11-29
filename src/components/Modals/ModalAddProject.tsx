@@ -8,6 +8,16 @@ interface ModalAddProjectProps {
     onHide: () => void;
 };
 
+interface IVolume {
+    id: number;
+    text: string;
+};
+
+interface IInform {
+    id: number;
+    text: string;
+};
+
 
 const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
     const [name, setName] = useState<string>('');    
@@ -17,8 +27,34 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
     const [customer, setCustomer] = useState<string>('');    
     const [designer, setDesigner] = useState<string>(''); 
     const [period, setPeriod] = useState<string>(''); 
+    const [volume, setVolume] = useState<IVolume[]>([]);
+    const [inform, setInform] = useState<IInform[]>([]);
     // @ts-ignore
     const [photo, setPhoto] = useState<FileList>([]);
+
+    const addVolume = () => {
+        setVolume([...volume, {text: '', id: Date.now()}]);
+    };
+
+    const removeVolume = (id: number) => {
+        setVolume(volume.filter(item => item.id !== id));
+    };
+
+    const changeVolume = (key: string, value: string, id: number) => {
+        setVolume(volume.map(item => item.id === id ? {...item, [key]: value} : item));
+    };
+
+    const addInform = () => {
+        setInform([...inform, {text: '', id: Date.now()}]);
+    };
+
+    const removeInform = (id: number) => {
+        setInform(inform.filter(item => item.id !== id));
+    };
+
+    const changeInform = (key: string, value: string, id: number) => {
+        setInform(inform.map(item => item.id === id ? {...item, [key]: value} : item));
+    };
 
     const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const files: FileList | null = e.target.files;
@@ -36,6 +72,8 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
         formData.append('customer', customer);
         formData.append('designer', designer);
         formData.append('period', period);
+        formData.append('volume', JSON.stringify(volume));
+        formData.append('inform', JSON.stringify(inform));
 
         for (let i = 0; i < photo.length; i++) {
             formData.append('photo', photo[i]);
@@ -104,6 +142,57 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                         onChange={e => setPeriod(e.target.value)}
                         placeholder="Введите сроки выполнения"
                     />
+
+                    <Button 
+                        className="mt-3 w-100"
+                        variant="outline-secondary"
+                        onClick={addVolume}
+                        >Добавить объём проектирования
+                    </Button>
+                    {volume.map(item =>
+                        <Row className="mt-3" key={item.id}>
+                            <Col md={9}>
+                                <Form.Control 
+                                    value={item.text}
+                                    onChange={e => changeVolume('text', e.target.value, item.id)}
+                                    placeholder="Введите работу"
+                                />
+                            </Col>
+                            <Col md={3}>
+                                <Button 
+                                    variant="outline-danger"
+                                    onClick={() => removeVolume(item.id)}
+                                    >Удалить
+                                </Button>
+                            </Col>
+                        </Row>    
+                    )}
+
+                    <Button 
+                        className="mt-3 w-100"
+                        variant="outline-secondary"
+                        onClick={addInform}
+                        >Добавить проектные данные
+                    </Button>
+                    {inform.map(item =>
+                        <Row className="mt-3" key={item.id}>
+                            <Col md={9}>
+                                <Form.Control 
+                                    value={item.text}
+                                    onChange={e => changeInform('text', e.target.value, item.id)}
+                                    placeholder="Введите данные"
+                                />
+                            </Col>
+                            <Col md={3}>
+                                <Button 
+                                    variant="outline-danger"
+                                    onClick={() => removeInform(item.id)}
+                                    >Удалить
+                                </Button>
+                            </Col>
+                        </Row>    
+                    )}
+
                     <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
                     <Form.Control                        
                         type="file"

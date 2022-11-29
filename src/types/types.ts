@@ -16,22 +16,41 @@ export interface IContacts {
     link: string
 };
 
+export interface IInfoInform {
+    id: number;
+    infoId: number;
+    inform: string;
+};
+
+export interface IInfoVolume {
+    id: number;
+    infoId: number;
+    volume: string;
+};
+
 export interface IInfo {
+    id: number;
     customer: string;
     designer?: string;
     period: string;
-    volumes: string[];
-    information: string[];
+    volumes: IInfoVolume[];
+    informs: IInfoInform[];
+};
+
+export interface IProjectPhoto {
+    id: number;
+    projectId: number;
+    photo: string;
 };
 
 export interface IProject {
     id: number;
     name: string;
     task: string;
-    location: string;
-    photos: string[],
+    location: string;    
     category: string;
     info: IInfo;
+    photos: IProjectPhoto[];
 };
 
 export interface IServise {
@@ -47,11 +66,17 @@ export interface ISlider {
     photo: string;
 };
 
+export interface ISystemPhoto {
+    id: number;
+    systemId: number;
+    photo: string;
+};
+
 export interface ISystem {
     id: number;
     title: string;
     description: string;
-    photos: string[];
+    photos: ISystemPhoto[];
 };
 
 export interface IVacancyCondition {

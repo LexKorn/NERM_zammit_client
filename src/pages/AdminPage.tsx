@@ -28,7 +28,14 @@ const AdminPage: React.FC = () => {
                 onClick={() => setContactsVisible(true)}
                 >
                 Изменить контакты
-            </Button>            
+            </Button>       
+            <Button 
+                variant={"outline-secondary"} 
+                className="mt-4 p-2 shadow"
+                onClick={() => setContactsVisible(true)}
+                >
+                Изменить главный слайдер
+            </Button>      
             <Button 
                 variant={"outline-secondary"} 
                 className="mt-4 p-2 shadow"
