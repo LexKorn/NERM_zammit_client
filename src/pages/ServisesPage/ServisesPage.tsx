@@ -1,16 +1,16 @@
-import React from 'react';
-import {Tab, Nav, Row, Col, Container, Button} from 'react-bootstrap';
+import React, {useContext} from 'react';
+import {Tab, Nav, Row, Col, Button} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
 import {first, second, third, fourth, fifth, sixth, seventh} from '../../assets/img/servises/index';
 import { IServise } from '../../types/types';
+import { Context } from '../..';
 
 import './servisesPage.sass';
 
 
 const ServisesPage: React.FC = () => {
-    // const {user} = useContext(Context);
-    const isAuth: boolean = true;
+    const {admin} = useContext(Context);
 
     const servises: IServise[] = [
         {
@@ -81,7 +81,7 @@ const ServisesPage: React.FC = () => {
                                 <Tab.Pane eventKey={item.id} key={item.id}>
                                     <img src={item.cover} alt={item.title} className='tabs__img'/>
                                     <p>{item.description}</p>
-                                    {isAuth &&
+                                    {admin.isAuth &&
                                         <div style={{marginTop: 15}}>
                                             <Button variant={"outline-danger "} >Удалить</Button>
                                             <Button variant={"outline-primary "} style={{marginLeft: 10}} >Обновить</Button>

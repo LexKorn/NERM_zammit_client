@@ -1,15 +1,18 @@
-import React from 'react';
-import {Accordion, Container} from 'react-bootstrap';
+import React, {useContext} from 'react';
+import {Accordion, Container, Button} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
-import Slider from '../../components/Slider/Slider';
+import SliderModify from '../../components/Slider/SliderModify';
 import { ISystem } from '../../types/types';
 import {ad1, ad2, ad3, autp1, autp2, cool1, et1, et2, et3, ht1, ht2, it1, it2, it3, lt1, lt2, odn1, odn2, sa1, sa2} from '../../assets/img/systems/index';
+import { Context } from '../..';
 
 import './systemsPage.sass';
 
 
 const SystemsPage: React.FC = () => {
+    const {admin} = useContext(Context);
+
     const systems: ISystem[] = [
         {
             id: 1,
@@ -60,6 +63,27 @@ const SystemsPage: React.FC = () => {
                     photo: ht2
                 },
             ]
+        },{
+            id: 4,
+            title: 'Электроснабжение, электрооборудование',
+            description: 'Система электроснабжения - это совокупность электроустановок, предназначенных для обеспечения потребителей электрической энергией. Электрооборудование — это изделие, предназначенное для производства, передачи и изменения характеристик электрической энергии, а также для её преобразования в энергию другого вида.',
+            photos: [
+                {
+                    id: 7,
+                    systemId: 4,
+                    photo: et1
+                },
+                {
+                    id: 8,
+                    systemId: 4,
+                    photo: et2
+                },
+                {
+                    id: 9,
+                    systemId: 4,
+                    photo: et3
+                },
+            ]
         },
     ];
 
@@ -74,8 +98,14 @@ const SystemsPage: React.FC = () => {
                     <Accordion.Item eventKey={`${item.id}`} key={item.id}>
                         <Accordion.Header>{item.title}</Accordion.Header>
                         <Accordion.Body>
-                            <Slider slide1={item.photos[0].photo} slide2={item.photos[1].photo} />
+                            <SliderModify photos={item.photos} />
                             <p className="systems__text">{item.description}</p>
+                            {admin.isAuth &&
+                                <div style={{marginTop: 15}}>
+                                    <Button variant={"outline-danger "} >Удалить</Button>
+                                    <Button variant={"outline-primary "} style={{marginLeft: 10}} >Обновить</Button>
+                                </div>
+                            }
                         </Accordion.Body>
                     </Accordion.Item>
                 )}

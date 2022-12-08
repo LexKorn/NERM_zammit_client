@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
 import { IProject } from '../../../types/types';
-import Slider from '../../Slider/Slider';
+import SliderModify from '../../Slider/SliderModify';
+import { Context } from '../../..';
 
 import './modalProject.sass';
 
@@ -14,8 +15,7 @@ interface ModalProjectProps {
 
 
 const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
-    // const {user} = useContext(Context);
-    const isAuth: boolean = true;
+    const {admin} = useContext(Context);
     
     return (
         <Modal
@@ -33,7 +33,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 {project.task} <br/>
                 {project.location}
                 <div className="modal-project">
-                    {project.photos && <Slider slide1={project.photos[0].photo} slide2={project.photos[1].photo} />}
+                    {project.photos && <SliderModify photos={project.photos} />}
                     {project.info && <div className="modal-project__info">
                         <div className='modal-project__info_1'>Заказчик:</div>
                         <div className='modal-project__info_1'>{project.info.customer}</div>
@@ -45,7 +45,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                         <div className='modal-project__info_2'>
                             <ul className='modal-project__info_list'>
                                 {project.info.volumes.map(item => 
-                                    <li>{item.volume}</li>
+                                    <li key={item.id}>{item.volume}</li>
                                 )}
                             </ul>
                         </div>
@@ -53,7 +53,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                         <div className='modal-project__info_1'>
                             <ul className='modal-project__info_list'>
                                 {project.info.informs.map(item => 
-                                    <li>{item.inform}</li>
+                                    <li key={item.id}>{item.inform}</li>
                                 )}
                             </ul>
                         </div>
@@ -61,7 +61,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                {isAuth &&
+                {admin.isAuth &&
                     <div>
                         <Button variant={"outline-danger "} onClick={onHide}>Удалить</Button>
                         <Button variant={"outline-primary "} style={{marginLeft: 10}} onClick={onHide}>Обновить</Button>

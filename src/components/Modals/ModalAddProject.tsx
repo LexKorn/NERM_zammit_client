@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Modal, Button, Form, Row, Col} from 'react-bootstrap';
+import {Modal, Button, Form, Row, Col, Dropdown} from 'react-bootstrap';
 
 import {createProject} from '../../http/projectAPI';
+import {Categories} from '../../types/types';
 
 interface ModalAddProjectProps {
     show: boolean;
@@ -117,13 +118,7 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                         value={location}
                         onChange={e => setLocation(e.target.value)}
                         placeholder="Введите местоположение объекта"
-                    />
-                    <Form.Control
-                        className="mt-3"
-                        value={category}
-                        onChange={e => setCategory(e.target.value)}
-                        placeholder="Введите категорию объекта"
-                    />
+                    />                    
                     <Form.Control
                         className="mt-3"
                         value={customer}
@@ -142,6 +137,20 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                         onChange={e => setPeriod(e.target.value)}
                         placeholder="Введите сроки выполнения"
                     />
+
+                    <Dropdown className="mt-3 mb-3">
+                        <Dropdown.Toggle variant={"outline-dark"}>Выберите категорию объекта</Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {/* @ts-ignore */}
+                            {Object.values(Categories).map(category => 
+                                <Dropdown.Item 
+                                    // onClick={() => library.setSelectedCategory(category)} 
+                                    key={category} >
+                                        {category}
+                                </Dropdown.Item>                                
+                            )}
+                        </Dropdown.Menu>
+                    </Dropdown>  
 
                     <Button 
                         className="mt-3 w-100"

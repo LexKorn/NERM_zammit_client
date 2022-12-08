@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
 import { IVacancy } from '../../types/types';
+import {Context} from '../..';
 
 interface ModalVacancyProps {
     show: boolean;
@@ -11,8 +12,7 @@ interface ModalVacancyProps {
 
 
 const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
-    // const {user} = useContext(Context);
-    const isAuth: boolean = true;
+    const {admin} = useContext(Context);
 
     return (
         <Modal
@@ -50,7 +50,7 @@ const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                {isAuth &&
+                {admin.isAuth &&
                     <div>
                         <Button variant={"outline-danger "} onClick={onHide}>Удалить</Button>
                         <Button variant={"outline-primary "} style={{marginLeft: 10}} onClick={onHide}>Обновить</Button>

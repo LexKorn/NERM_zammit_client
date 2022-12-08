@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE, ADMIN_ROUTE } from "../../utils/consts";
 import logo from '../../assets/icons/ib-zammit_logo.jpg';
+import { IContacts } from '../../types/types';
+import { Context } from '../..';
 
 import './header.sass';
 
@@ -11,8 +13,14 @@ const Header: React.FC = () => {
     const location = useLocation();
     const [classMenu, setClassMenu] = useState<string>('');
 
-    // const {user} = useContext(Context);
-    const isAuth: boolean = true;
+    const contacts: IContacts = {
+        id: 1,
+        phone: '+7 495 926 23 43',
+        address: '125040, Москва, 3-я ул. Ямского Поля, д. 28, оф. 2031, Бизнес-центр "БИНОМ-СОД"',
+        link: 'https://yandex.ru/maps/-/CCUNyMhCOB'
+    };
+
+    const {admin} = useContext(Context);
 
     useEffect(() => {
         setClassMenu('');
@@ -33,7 +41,7 @@ const Header: React.FC = () => {
                 </div>    
                 <div className="header__contacts">
                     <h3 className="header__contacts_title">Контакты</h3>
-                    <p className="header__contacts_text">+7 495 926 23 43</p>
+                    <p className="header__contacts_text">{contacts.phone}</p>
                     <a className="header__contacts_text email" href="mailto:moskau@ib-zammit.ru">moskau@ib-zammit.ru</a>
                 </div>
             </div>
@@ -69,7 +77,7 @@ const Header: React.FC = () => {
                             ВАКАНСИИ
                         </NavLink>
                     </li>
-                    {isAuth &&
+                    {admin._isAuth &&
                         <li className="header__menu_item">
                             <NavLink to={ADMIN_ROUTE} className={location.pathname === ADMIN_ROUTE ? "active" : ''} >
                                 АДМИНКА

@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import { IProject, Categories } from '../types/types';
 import ModalProject from '../components/Modals/ModalProject/ModalProject';
 import ProjectContainer from '../components/ProjectContainer/ProjectContainer';
-import {ice1, kinoEkrn, } from '../assets/img/projects/index';
+import {ice1, kinoEkrn, angara1, epsilon1 } from '../assets/img/projects/index';
 
 
 const ProjectsPage: React.FC = () => {
@@ -72,14 +72,24 @@ const ProjectsPage: React.FC = () => {
             category: Categories.MFC,
             photos: [
                 {
-                    id: 2,
+                    id: 3,
                     projectId: 2,
                     photo: ice1
                 },
                 {
-                    id: 3,
+                    id: 4,
                     projectId: 2,
                     photo: kinoEkrn
+                },
+                {
+                    id: 5,
+                    projectId: 2,
+                    photo: angara1
+                },
+                {
+                    id: 6,
+                    projectId: 2,
+                    photo: epsilon1
                 }
             ],
             info: {

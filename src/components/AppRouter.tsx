@@ -4,17 +4,15 @@ import {observer} from "mobx-react-lite";
 
 import { authRoutes, publicRoutes } from '../routes';
 import { MAIN_ROUTE } from '../utils/consts';
-// import { Context } from '../index';
+import { Context } from '../';
 
 
 const AppRouter: React.FC = observer(() => { 
-    // const {user} = useContext(Context);
-    const isAuth: boolean = true;
+    const {admin} = useContext(Context);
 
     return (
         <Routes>
-            {/* user.isAuth  */}
-            {isAuth && authRoutes.map(({path, Component}) => 
+            {admin.isAuth && authRoutes.map(({path, Component}) => 
                 <Route key={path} path={path} element={<Component />} />
             )}
             {publicRoutes.map(({path, Component}) => 

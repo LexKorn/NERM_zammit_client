@@ -1,4 +1,4 @@
-export enum Categories {
+export const enum Categories {
     CULTURES = 'Объекты здравоохранения, образования, культуры и спорта',
     MFC = 'Многофункциональные комплексы',
     OFFICES = 'Офисные здания',
@@ -9,11 +9,17 @@ export enum Categories {
     AVIA = 'Объекты авиационной инфраструктуры'
 };
 
+export interface ICompany {
+    id: number;
+    description: string;
+    departments: string[];
+};
+
 export interface IContacts {
     id: number;
-    phone: string,
-    address: string,
-    link: string
+    phone: string;
+    address: string;
+    link: string;
 };
 
 export interface IInfoInform {
