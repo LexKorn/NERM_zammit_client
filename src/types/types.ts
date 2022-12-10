@@ -106,7 +106,7 @@ export interface IVacancyRequirement {
 export interface IVacancy {
     id: number;
     name: string;
-    conditions: IVacancyCondition[];
-    duties: IVacancyDuty[];
-    requirements: IVacancyRequirement[];    
+    condition: IVacancyCondition[];
+    duty: IVacancyDuty[];
+    requirement: IVacancyRequirement[];    
 };

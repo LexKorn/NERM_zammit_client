@@ -10,8 +10,8 @@ export const deleteVacancy = async (id: number) => {
     return data;
 };
 
-export const updateVacancy = async (id: number, name: string) => {
-    const {data} = await $host.put('api/vacancy/' + id, {name});
+export const updateVacancy = async (id: number, vacancy: FormData) => {
+    const {data} = await $host.put('api/vacancy/' + id, vacancy);
     return data;
 };
 
