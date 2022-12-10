@@ -31,6 +31,8 @@ const ModalUpdateVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide, vacan
     const [condition, setCondition] = useState<IVacancyCondition[]>(vacancy.condition);
     const [duty, setDuty] = useState<IVacancyDuty[]>(vacancy.duty);
     const [requirement, setRequirement] = useState<IVacancyRequirement[]>(vacancy.requirement);
+    // console.log(condition[0].id);
+    
 
     const addCondition = () => {
         setCondition([...condition, {condition: '', id: Date.now(), vacancyId: vacancy.id}]);

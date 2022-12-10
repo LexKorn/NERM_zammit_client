@@ -73,7 +73,7 @@ const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
         formData.append('duty', JSON.stringify(duty));
         formData.append('requirement', JSON.stringify(requirement));
 
-        createVacancy(formData).then(data => {
+        createVacancy(formData).then(() => {
             onHide();
         });
     };
