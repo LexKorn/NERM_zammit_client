@@ -10,8 +10,8 @@ export const deleteServise = async (id: number) => {
     return data;
 };
 
-export const updateServise = async (id: number, name: string) => {
-    const {data} = await $host.put('api/servise/' + id, {name});
+export const updateServise = async (id: number, servise: FormData) => {
+    const {data} = await $host.put('api/servise/' + id, servise);
     return data;
 };
 

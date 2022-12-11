@@ -10,29 +10,12 @@ interface ModalAddVacancyProps {
     vacancy: IVacancy;
 };
 
-// interface ICondition {
-//     id: number;
-//     text: string;
-// };
-
-// interface IDuty {
-//     id: number;
-//     text: string;
-// };
-
-// interface IRequirement {
-//     id: number;
-//     text: string;
-// };
-
 
 const ModalUpdateVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide, vacancy}) => {
     const [name, setName] = useState<string>(vacancy.name);    
     const [condition, setCondition] = useState<IVacancyCondition[]>(vacancy.condition);
     const [duty, setDuty] = useState<IVacancyDuty[]>(vacancy.duty);
     const [requirement, setRequirement] = useState<IVacancyRequirement[]>(vacancy.requirement);
-    // console.log(condition[0].id);
-    
 
     const addCondition = () => {
         setCondition([...condition, {condition: '', id: Date.now(), vacancyId: vacancy.id}]);
@@ -71,6 +54,16 @@ const ModalUpdateVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide, vacan
     };
 
     const addVacancy = () => {
+        if (!name.trim()) {
+            return alert('Название вакансии обязательно для заполнения');
+        } else if (condition.length === 0) {
+            return alert('Необходимо задать хотя бы 1 условие');
+        } else if (duty.length === 0) {
+            return alert('Необходимо задать хотя бы 1 обязанность');
+        } else if (requirement.length === 0) {
+            return alert('Необходимо задать хотя бы 1 требование');
+        }
+
         const formData = new FormData();
         formData.append('name', name);
         formData.append('condition', JSON.stringify(condition));
