@@ -53,7 +53,7 @@ const ModalUpdateVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide, vacan
         setRequirement(requirement.map(item => item.id === id ? {...item, [key]: value} : item));
     };
 
-    const addVacancy = () => {
+    const editVacancy = () => {
         if (!name.trim()) {
             return alert('Название вакансии обязательно для заполнения');
         } else if (condition.length === 0) {
@@ -175,7 +175,7 @@ const ModalUpdateVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide, vacan
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant={"outline-primary "} onClick={addVacancy}>Обновить</Button>
+                <Button variant={"outline-primary "} onClick={editVacancy}>Обновить</Button>
                 <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>

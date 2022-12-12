@@ -133,7 +133,16 @@ const ServisesPage: React.FC = () => {
                     </Tab.Container>}
                 </>                
             }
-            <ModalUpdateServise show={visible} onHide={() => setVisible(false)} servise={servise}  />
+            <ModalUpdateServise 
+                show={visible} 
+                onHide={() => setVisible(false)} 
+                servise={servise}
+                initId={servise.id}
+                initTitle={servise.title}
+                initDescription={servise.description}
+                // @ts-ignore
+                initCover={servise.cover}
+            />
         </div>
     );
 };

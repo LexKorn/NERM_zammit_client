@@ -67,6 +67,16 @@ const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
     };
 
     const addVacancy = () => {
+        if (!name.trim()) {
+            return alert('Название вакансии обязательно для заполнения');
+        } else if (condition.length === 0) {
+            return alert('Необходимо задать хотя бы 1 условие');
+        } else if (duty.length === 0) {
+            return alert('Необходимо задать хотя бы 1 обязанность');
+        } else if (requirement.length === 0) {
+            return alert('Необходимо задать хотя бы 1 требование');
+        }
+        
         const formData = new FormData();
         formData.append('name', name);
         formData.append('condition', JSON.stringify(condition));

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Modal, Button, Form} from 'react-bootstrap';
 
 import {createServise} from '../../http/serviseAPI';
+import CUServise from '../CUServise';
 
 interface ModalAddServiseProps {
     show: boolean;
@@ -15,65 +15,22 @@ const ModalAddServise: React.FC<ModalAddServiseProps> = ({show, onHide}) => {
     // @ts-ignore
     const [cover, setCover] = useState<File>(null);
 
-    const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
-        const files: FileList | null = e.target.files;
-        if (files) {
-            setCover(files[0]);
-        } 
-    };
-
-    const addServise = () => {
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('cover', cover);
-
-        createServise(formData).then(() => {
-            onHide();
-        });
-    };
-
-
     return (
-        <Modal
+        <CUServise
+            id={0}
+            title={title}
+            description={description}
+            cover={cover}
+            setTitle={setTitle}
+            setDescription={setDescription}
+            setCover={setCover}
+            // @ts-ignore
+            handler={createServise}
+            modalTitle='Добавить новую услугу'
+            btnName='Добавить'
             show={show}
             onHide={onHide}
-            // @ts-ignore
-            size="md"
-            centered
-            >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить новую услугу
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form>
-                    <Form.Control
-                        className="mt-3"
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                        placeholder="Введите название услуги"
-                    />
-                    <Form.Control as="textarea"
-                        className="mt-3"
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                        placeholder="Введите описание услуги"
-                        maxLength={700}
-                    />
-                    <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
-                    <Form.Control                        
-                        type="file"
-                        onChange={selectFile}
-                    />                     
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant={"outline-success "} onClick={addServise}>Добавить</Button>
-                <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
-            </Modal.Footer>
-        </Modal>
+        />
     );
 };
 
