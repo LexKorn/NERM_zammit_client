@@ -4,13 +4,13 @@ import { AxiosError } from 'axios';
 
 import { updateContacts } from '../../http/contactsAPI';
 
-interface ModalEditConactsProps {
+interface ModalEditContactsProps {
     show: boolean;
     onHide: () => void;
 };
 
 
-const ModalEditConacts: React.FC<ModalEditConactsProps> = ({show, onHide}) => {
+const ModalEditContacts: React.FC<ModalEditContactsProps> = ({show, onHide}) => {
     const [phone, setPhone] = useState<string>('');
     const [address, setAddress] = useState<string>('');
     const [link, setLink] = useState<string>('');
@@ -91,4 +91,4 @@ const ModalEditConacts: React.FC<ModalEditConactsProps> = ({show, onHide}) => {
     );
 };
 
-export default ModalEditConacts;
+export default ModalEditContacts;

@@ -9,7 +9,7 @@ import ModalAddSlider from '../components/Modals/ModalAddSlider';
 import ModalAddSystem from '../components/Modals/ModalAddSystem';
 import ModalAddVacancy from '../components/Modals/ModalAddVacancy';
 import ModalEditCompany from '../components/Modals/ModalEditCompany';
-import ModalEditConacts from '../components/Modals/ModalEditConacts';
+import ModalEditContacts from '../components/Modals/ModalEditContacts';
 import {Context} from '../';
 import {MAIN_ROUTE} from '../utils/consts';
 
@@ -101,7 +101,7 @@ const AdminPage: React.FC = () => {
             <ModalAddSystem show={systemVisible} onHide={() => setSystemVisible(false)} />     
             <ModalAddVacancy show={vacancyVisible} onHide={() => setVacancyVisible(false)} />
             <ModalEditCompany show={companyVisible} onHide={() => setCompanyVisible(false)} />
-            <ModalEditConacts show={contactsVisible} onHide={() => setContactsVisible(false)} />
+            <ModalEditContacts show={contactsVisible} onHide={() => setContactsVisible(false)} />
         </Container>
     );
 };
