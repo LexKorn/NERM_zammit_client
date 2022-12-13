@@ -41,11 +41,23 @@ const CUServise: React.FC<CUServiseProps> = ({id, title, description, cover, set
         if (btnName === 'Добавить') {
             // @ts-ignore
             handler(formData)
-                .then(() => onHide())
+                .then(() => {
+                    onHide();
+                    setTitle('');
+                    setDescription('');
+                    // @ts-ignore
+                    setCover(null);
+                })
                 .catch(err => alert(err.response.data.message));
         } else if (btnName === 'Обновить') {
             handler(id, formData)
-                .then(() => onHide())
+                .then(() => {
+                    onHide();
+                    setTitle('');
+                    setDescription('');
+                    // @ts-ignore
+                    setCover(null);
+                })
                 .catch(err => alert(err.response.data.message));
         }        
     };
