@@ -137,11 +137,6 @@ const ServisesPage: React.FC = () => {
                 show={visible} 
                 onHide={() => setVisible(false)} 
                 servise={servise}
-                initId={servise.id}
-                initTitle={servise.title}
-                initDescription={servise.description}
-                // @ts-ignore
-                initCover={servise.cover}
             />
         </div>
     );

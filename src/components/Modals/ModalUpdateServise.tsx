@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import CUServise from '../CUServise';
 import {updateServise} from '../../http/serviseAPI';
@@ -8,22 +8,23 @@ interface ModalUpdateServiseProps {
     show: boolean;
     onHide: () => void;
     servise: IServise;
-    initId: number;
-    initTitle: string;
-    initDescription: string;
-    initCover: File;
 };
 
 
-const ModalUpdateServise: React.FC<ModalUpdateServiseProps> = ({show, onHide, servise, initId, initTitle, initDescription, initCover}) => {
-    const [title, setTitle] = useState<string>(initTitle);    
-    const [description, setDescription] = useState<string>(initDescription); 
+const ModalUpdateServise: React.FC<ModalUpdateServiseProps> = ({show, onHide, servise}) => {
+    const [title, setTitle] = useState<string>('');    
+    const [description, setDescription] = useState<string>(''); 
     // @ts-ignore
-    const [cover, setCover] = useState<File>(initCover);
+    const [cover, setCover] = useState<File>(null);
 
+    useEffect(() => {
+        setTitle(servise.title);
+        setDescription(servise.description);
+    }, [show]);
+    
     return (
         <CUServise
-            id={initId}
+            id={servise.id}
             title={title}
             description={description}
             cover={cover}
