@@ -1,22 +1,8 @@
 import React, {useState} from 'react';
 
 import { createVacancy } from '../../http/vacancyAPI';
+import { ICondition, IDuty, IRequirement } from '../../types/types';
 import CUVacancy from '../CUVacancy';
-
-interface ICondition {
-    id: number;
-    text: string;
-};
-
-interface IDuty {
-    id: number;
-    text: string;
-};
-
-interface IRequirement {
-    id: number;
-    text: string;
-};
 
 interface ModalAddVacancyProps {
     show: boolean;

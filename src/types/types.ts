@@ -110,3 +110,18 @@ export interface IVacancy {
     duty: IVacancyDuty[];
     requirement: IVacancyRequirement[];    
 };
+
+export interface ICondition {
+    id: number;
+    condition: string;
+};
+
+export interface IDuty {
+    id: number;
+    duty: string;
+};
+
+export interface IRequirement {
+    id: number;
+    requirement: string;
+};

@@ -1,20 +1,7 @@
 import React from 'react';
 import {Modal, Button, Form, Row, Col} from 'react-bootstrap';
 
-interface ICondition {
-    id: number;
-    text: string;
-};
-
-interface IDuty {
-    id: number;
-    text: string;
-};
-
-interface IRequirement {
-    id: number;
-    text: string;
-};
+import { ICondition, IDuty, IRequirement } from '../types/types';
 
 interface CUVacancyProps {
     id: number;
@@ -35,13 +22,9 @@ interface CUVacancyProps {
 
 
 const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, requirement, setName, setCondition, setDuty, setRequirement, handler, modalTitle, btnName, show, onHide}) => {
-    // const [name, setName] = useState<string>('');    
-    // const [condition, setCondition] = useState<ICondition[]>([]);
-    // const [duty, setDuty] = useState<IDuty[]>([]);
-    // const [requirement, setRequirement] = useState<IRequirement[]>([]);
 
     const addCondition = () => {
-        setCondition([...condition, {text: '', id: Date.now()}]);
+        setCondition([...condition, {condition: '', id: Date.now()}]);
     };
 
     const removeCondition = (id: number) => {
@@ -53,7 +36,7 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
     };
 
     const addDuty = () => {
-        setDuty([...duty, {text: '', id: Date.now()}]);
+        setDuty([...duty, {duty: '', id: Date.now()}]);
     };
 
     const removeDuty = (id: number) => {
@@ -65,7 +48,7 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
     };
 
     const addRequirement = () => {
-        setRequirement([...requirement, {text: '', id: Date.now()}]);
+        setRequirement([...requirement, {requirement: '', id: Date.now()}]);
     };
 
     const removeRequirement = (id: number) => {
@@ -150,8 +133,8 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                         <Row className="mt-3" key={item.id}>
                             <Col md={9}>
                                 <Form.Control 
-                                    value={item.text}
-                                    onChange={e => changeDuty('text', e.target.value, item.id)}
+                                    value={item.duty}
+                                    onChange={e => changeDuty('duty', e.target.value, item.id)}
                                     placeholder="Введите обязанность"
                                 />
                             </Col>
@@ -175,8 +158,8 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                         <Row className="mt-3" key={item.id}>
                             <Col md={9}>
                                 <Form.Control 
-                                    value={item.text}
-                                    onChange={e => changeRequirement('text', e.target.value, item.id)}
+                                    value={item.requirement}
+                                    onChange={e => changeRequirement('requirement', e.target.value, item.id)}
                                     placeholder="Введите требование"
                                 />
                             </Col>
@@ -200,8 +183,8 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                         <Row className="mt-3" key={item.id}>
                             <Col md={9}>
                                 <Form.Control 
-                                    value={item.text}
-                                    onChange={e => changeCondition('text', e.target.value, item.id)}
+                                    value={item.condition}
+                                    onChange={e => changeCondition('condition', e.target.value, item.id)}
                                     placeholder="Введите условие"
                                 />
                             </Col>
