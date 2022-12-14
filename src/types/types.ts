@@ -82,7 +82,7 @@ export interface ISystem {
     id: number;
     title: string;
     description: string;
-    photos: ISystemPhoto[];
+    photo: ISystemPhoto[];
 };
 
 export interface IVacancyCondition {

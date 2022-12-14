@@ -1,53 +1,40 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
 
-import {updateServise} from '../../http/serviseAPI';
-import { IServise } from '../../types/types';
+import {createSystem} from '../../http/systemAPI';
 
-interface ModalUpdateServiseProps {
+interface ModalAddSystemProps {
     show: boolean;
     onHide: () => void;
-    servise: IServise;
 };
 
 
-const ModalUpdateServise: React.FC<ModalUpdateServiseProps> = ({show, onHide, servise}) => {
-    const [title, setTitle] = useState<string>(servise.title);    
-    const [description, setDescription] = useState<string>(servise.description);   // (() => {return servise.description})
+const ModalAddSystem: React.FC<ModalAddSystemProps> = ({show, onHide}) => {
+    const [title, setTitle] = useState<string>('');    
+    const [description, setDescription] = useState<string>(''); 
     // @ts-ignore
-    const [cover, setCover] = useState<File>(servise.cover);
+    const [photo, setPhoto] = useState<FileList>([]);
 
     const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const files: FileList | null = e.target.files;
         if (files) {
-            setCover(files[0]);
-        } 
+            setPhoto(files);
+        }        
     };
 
-    // useEffect(() => {}, []);
-
-    const editServise = () => {
-        if (!title.trim() || !description.trim()) {
-            return alert('Все поля обязательны для заполнения');
-        } else if (!cover) {
-            return alert('Изображение необходимо загрузить');
-        }
-
+    const addSystem = () => {
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
-        formData.append('cover', cover);
+        for (let i = 0; i < photo.length; i++) {
+            formData.append('photo', photo[i]);
+        }
 
-        updateServise(servise.id, formData).then(() => {
+        createSystem(formData).then(() => {
             onHide();
         });
     };
 
-    // console.log(servise);
-    // console.log(servise.title);
-    // console.log(servise.cover);
-    // console.log(description);
-        
 
     return (
         <Modal
@@ -59,7 +46,7 @@ const ModalUpdateServise: React.FC<ModalUpdateServiseProps> = ({show, onHide, se
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Обновить услугу
+                    Добавить новую систему
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -68,28 +55,29 @@ const ModalUpdateServise: React.FC<ModalUpdateServiseProps> = ({show, onHide, se
                         className="mt-3"
                         value={title}
                         onChange={e => setTitle(e.target.value)}
-                        placeholder="Введите название услуги"
+                        placeholder="Введите название системы"
                     />
                     <Form.Control as="textarea"
                         className="mt-3"
                         value={description}
                         onChange={e => setDescription(e.target.value)}
-                        placeholder="Введите описание услуги"
+                        placeholder="Введите описание системы"
                         maxLength={700}
                     />
                     <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
                     <Form.Control                        
                         type="file"
+                        multiple
                         onChange={selectFile}
                     />                     
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant={"outline-success "} onClick={editServise}>Обновить</Button>
+                <Button variant={"outline-success "} onClick={addSystem}>Добавить</Button>
                 <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>
     );
 };
 
-export default ModalUpdateServise;
+export default ModalAddSystem;

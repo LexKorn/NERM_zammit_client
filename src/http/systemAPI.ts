@@ -10,8 +10,8 @@ export const deleteSystem = async (id: number) => {
     return data;
 };
 
-export const updateSystem = async (id: number, name: string) => {
-    const {data} = await $host.put('api/system/' + id, {name});
+export const updateSystem = async (id: number, system: FormData) => {
+    const {data} = await $host.put('api/system/' + id, system);
     return data;
 };
 

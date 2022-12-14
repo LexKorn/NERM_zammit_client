@@ -18,7 +18,7 @@ const SliderModify: React.FC<SliderProps> = ({photos}) => {
                 <Carousel.Item key={item.id}>
                     <img
                         className='slider-item'
-                        src={item.photo}
+                        src={process.env.REACT_APP_API_URL + item.photo}
                         alt={`image ${item.id}`}
                     />
                 </Carousel.Item>
