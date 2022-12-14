@@ -1,24 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { createVacancy } from '../../http/vacancyAPI';
-import { ICondition, IDuty, IRequirement } from '../../types/types';
+import { IVacancy, ICondition, IDuty, IRequirement } from '../../types/types';
 import CUVacancy from '../CUVacancy';
 
-interface ModalAddVacancyProps {
+interface ModalCloneVacancyProps {
     show: boolean;
     onHide: () => void;
+    vacancy: IVacancy;
 };
 
 
-const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
+const ModalCloneVacancy: React.FC<ModalCloneVacancyProps> = ({show, onHide, vacancy}) => {
     const [name, setName] = useState<string>('');    
     const [condition, setCondition] = useState<ICondition[]>([]);
     const [duty, setDuty] = useState<IDuty[]>([]);
     const [requirement, setRequirement] = useState<IRequirement[]>([]);
 
+    useEffect(() => {
+        setName(vacancy.name);
+        setCondition(vacancy.condition);
+        setDuty(vacancy.duty);
+        setRequirement(vacancy.requirement);
+    }, [show]);
+        
+
     return (
         <CUVacancy
-            id={0}
+            id={vacancy.id}
             name={name}
             condition={condition}
             duty={duty}
@@ -29,12 +38,12 @@ const ModalAddVacancy: React.FC<ModalAddVacancyProps> = ({show, onHide}) => {
             setRequirement={setRequirement}
             // @ts-ignore
             handler={createVacancy}
-            modalTitle='Добавить новую вакансию'
-            btnName='Добавить'
+            modalTitle='Дублировать вакансию'
+            btnName='Дублировать'
             show={show}
             onHide={onHide}
         />
     );
 };
 
-export default ModalAddVacancy;
+export default ModalCloneVacancy;

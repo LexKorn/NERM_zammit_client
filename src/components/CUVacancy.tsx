@@ -76,7 +76,7 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
         formData.append('duty', JSON.stringify(duty));
         formData.append('requirement', JSON.stringify(requirement));
 
-        if (btnName === 'Добавить') {
+        if (btnName === 'Добавить' || btnName === 'Дублировать') {
             // @ts-ignore
             handler(formData)
                 .then(() => {
@@ -200,7 +200,11 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant={btnName === 'Добавить' ? "outline-success" : "outline-primary"} onClick={onClick}>{btnName}</Button>
+                <Button 
+                    variant={btnName === 'Добавить' ? "outline-success" : btnName === 'Обновить' ? "outline-primary" :  "outline-info"} 
+                    onClick={onClick}>
+                        {btnName}
+                </Button>
                 <Button variant={"outline-secondary"} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>

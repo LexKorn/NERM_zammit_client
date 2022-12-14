@@ -5,6 +5,7 @@ import { IVacancy } from '../../types/types';
 import {Context} from '../..';
 import { deleteVacancy } from '../../http/vacancyAPI';
 import ModalUpdateVacancy from './ModalUpdateVacancy';
+import ModalCloneVacancy from './ModalCloneVacancy';
 
 interface ModalVacancyProps {
     show: boolean;
@@ -16,6 +17,7 @@ interface ModalVacancyProps {
 const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
     const {admin} = useContext(Context);
     const [vacancyUpdateVisible, setVacancyUpdateVisible] = useState<boolean>(false);
+    const [vacancyCloneVisible, setVacancyCloneVisible] = useState<boolean>(false);
 
     const removeVacancy = () => {
         if (window.confirm('Вы действительно хотите удалить вакансию?')) {
@@ -68,13 +70,15 @@ const ModalVacancy: React.FC<ModalVacancyProps> = ({show, onHide, vacancy}) => {
             <Modal.Footer>
                 {admin.isAuth &&
                     <div>
-                        <Button variant={"outline-danger "} onClick={removeVacancy}>Удалить</Button>
-                        <Button variant={"outline-primary "} style={{marginLeft: 10}} onClick={editVacancy}>Обновить</Button>
+                        <Button variant={"outline-danger"} onClick={removeVacancy}>Удалить</Button>
+                        <Button variant={"outline-primary"} style={{marginLeft: 10}} onClick={editVacancy}>Обновить</Button>
+                        <Button variant={"outline-info"} style={{marginLeft: 10}} onClick={() => setVacancyCloneVisible(true)}>Дублировать</Button>
                     </div>
                 }
-                <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
+                <Button variant={"outline-secondary"} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
             <ModalUpdateVacancy show={vacancyUpdateVisible} onHide={() => setVacancyUpdateVisible(false)} vacancy={vacancy}  />
+            <ModalCloneVacancy show={vacancyCloneVisible} onHide={() => setVacancyCloneVisible(false)} vacancy={vacancy}  />
         </Modal>
     );
 };
