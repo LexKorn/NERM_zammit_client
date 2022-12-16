@@ -10,8 +10,8 @@ export const deleteSlider = async (id: number) => {
     return data;
 };
 
-export const updateSlider = async (id: number, name: string) => {
-    const {data} = await $host.put('api/slider/' + id, {name});
+export const updateSlider = async (id: number, slider: FormData) => {
+    const {data} = await $host.put('api/slider/' + id, slider);
     return data;
 };
 

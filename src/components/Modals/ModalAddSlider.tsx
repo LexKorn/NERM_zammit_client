@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
+import { AxiosError } from 'axios';
 
 import {createSlider} from '../../http/sliderAPI';
 
@@ -22,13 +23,28 @@ const ModalAddSlider: React.FC<ModalAddSliderProps> = ({show, onHide}) => {
     };
 
     const addSlider = () => {
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('photo', photo);
+        if (!title.trim()) {
+            return alert('Название объекта обязательно для заполнения');
+        } else if (!photo) {
+            return alert('Изображение необходимо загрузить');
+        }
 
-        createSlider(formData).then(() => {
-            onHide();
-        });
+        try {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('photo', photo);
+
+            createSlider(formData).then(() => {
+                onHide();
+                setTitle('');
+                // @ts-ignore
+                setPhoto(null);
+            });
+
+        } catch(err: unknown) {
+            const error = err as AxiosError;
+            alert(JSON.parse(error.request.response).message);
+        }         
     };
 
 

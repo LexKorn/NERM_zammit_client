@@ -63,7 +63,7 @@ const ModalEditContacts: React.FC<ModalEditContactsProps> = ({show, onHide}) => 
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Адрес</Form.Label>
-                        <Form.Control 
+                        <Form.Control as="textarea"
                             type="text" 
                             value={address}
                             onChange={e => setAddress(e.target.value)}
