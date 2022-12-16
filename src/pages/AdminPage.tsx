@@ -44,20 +44,20 @@ const AdminPage: React.FC = () => {
                 onClick={() => setContactsVisible(true)}
                 >
                 Изменить контакты
-            </Button>       
-            <Button 
-                variant={"outline-secondary"} 
-                className="mt-4 p-2 shadow"
-                onClick={() => setSliderVisible(true)}
-                >
-                Изменить главный слайдер
-            </Button>
+            </Button>                   
             <Button 
                 variant={"outline-secondary"} 
                 className="mt-4 p-2 shadow"
                 onClick={() => setCompanyVisible(true)}
                 >
                 Изменить информацию о компании
+            </Button>
+            <Button 
+                variant={"outline-secondary"} 
+                className="mt-4 p-2 shadow"
+                onClick={() => setSliderVisible(true)}
+                >
+                Добавить слайд
             </Button>
             <Button 
                 variant={"outline-secondary"} 
