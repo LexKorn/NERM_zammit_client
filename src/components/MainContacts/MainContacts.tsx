@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { IContacts } from '../../types/types';
+import { fetchContacts } from '../../http/contactsAPI';
 
 import './mainContacts.sass';
 
 
 const MainContacts: React.FC = () => {
-    const contacts: IContacts = {
+    const [contacts, setContacts] = useState<IContacts>({
         id: 1,
         phone: '+7 495 926 23 43',
         address: '125040, Москва, 3-я ул. Ямского Поля, д. 28, оф. 2031, Бизнес-центр "БИНОМ-СОД"',
         link: 'https://yandex.ru/maps/-/CCUNyMhCOB'
-    };
+    });
+
+    useEffect(() => {
+        fetchContacts(1).then(data => setContacts(data));
+    }, []);
 
     return (
         <div className='contacts'>

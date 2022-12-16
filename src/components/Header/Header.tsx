@@ -5,22 +5,25 @@ import { MAIN_ROUTE, PROJECT_ROUTE, SERVISES_ROUTE, SYSTEMS_ROUTE, VACANCY_ROUTE
 import logo from '../../assets/icons/ib-zammit_logo.jpg';
 import { IContacts } from '../../types/types';
 import { Context } from '../..';
+import { fetchContacts } from '../../http/contactsAPI';
 
 import './header.sass';
 
 
 const Header: React.FC = () => {
     const location = useLocation();
+    const {admin} = useContext(Context);
     const [classMenu, setClassMenu] = useState<string>('');
-
-    const contacts: IContacts = {
+    const [contacts, setContacts] = useState<IContacts>({
         id: 1,
         phone: '+7 495 926 23 43',
         address: '125040, Москва, 3-я ул. Ямского Поля, д. 28, оф. 2031, Бизнес-центр "БИНОМ-СОД"',
         link: 'https://yandex.ru/maps/-/CCUNyMhCOB'
-    };
+    });
 
-    const {admin} = useContext(Context);
+    useEffect(() => {
+        fetchContacts(1).then(data => setContacts(data));
+    }, []);
 
     useEffect(() => {
         setClassMenu('');

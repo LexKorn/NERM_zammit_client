@@ -9,10 +9,16 @@ export const enum Categories {
     AVIA = 'Объекты авиационной инфраструктуры'
 };
 
+export interface ICompanyDepartment {
+    id: number;
+    companyId: number;
+    department: string;
+};
+
 export interface ICompany {
     id: number;
     description: string;
-    departments: string[];
+    department: ICompanyDepartment[];
 };
 
 export interface IContacts {

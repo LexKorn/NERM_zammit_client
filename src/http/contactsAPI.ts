@@ -5,12 +5,12 @@ export const createContacts = async (contacts: FormData) => {
     return data;
 };
 
-export const updateContacts = async (id: number, contacts: FormData) => {
-    const {data} = await $host.put('api/contacts/' + id, contacts);
+export const fetchContacts = async (id: number) => {
+    const {data} = await $host.get('api/contacts/' + id);
     return data;
 };
 
-export const fetchContacts = async (id: number) => {
-    const {data} = await $host.get('api/contacts/' + id);
+export const updateContacts = async (id: number, contacts: FormData) => {
+    const {data} = await $host.put('api/contacts/' + id, contacts);
     return data;
 };

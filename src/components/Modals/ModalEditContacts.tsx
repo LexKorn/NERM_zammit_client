@@ -11,12 +11,15 @@ interface ModalEditContactsProps {
 
 
 const ModalEditContacts: React.FC<ModalEditContactsProps> = ({show, onHide}) => {
-    const [phone, setPhone] = useState<string>('');
-    const [address, setAddress] = useState<string>('');
-    const [link, setLink] = useState<string>('');
+    const [phone, setPhone] = useState<string>('+7 495 926 23 43');
+    const [address, setAddress] = useState<string>('125040, Москва, 3-я ул. Ямского Поля, д. 28, оф. 2031, Бизнес-центр "БИНОМ-СОД"');
+    const [link, setLink] = useState<string>('https://yandex.ru/maps/-/CCUNyMhCOB');
 
     const editContacts = async (e: React.FormEvent) => {
-        e.preventDefault();
+        if (!phone.trim() || !address.trim() || !link.trim()) {
+            return alert('Все поля обязательны для заполнения');
+        }
+
         try {
             const formData = new FormData();
             formData.append('phone', phone);
@@ -32,11 +35,6 @@ const ModalEditContacts: React.FC<ModalEditContactsProps> = ({show, onHide}) => 
             alert(JSON.parse(error.request.response).message);
         }        
     };
-
-    // const editContacts = (e: React.FormEvent) => {
-    //     e.preventDefault();
-    //     onHide();
-    // };
 
 
     return (

@@ -1,28 +1,57 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 import ank from '../../assets/icons/ank.jpg';
 import license from '../../assets/img/main/license.jpg';
 import { ICompany } from '../../types/types';
+import { fetchCompany } from '../../http/companyAPI';
 
 import './mainDescr.sass';
 
 
 const MainDescr: React.FC = () => {
     const [show, setShow] = useState<boolean>(false);
-
-    const company: ICompany = {
+    const [company, setCompany] = useState<ICompany>({
         id: 1,
         description: "ООО «Инженерное бюро Цаммит» успешно выполняет в Москве и в российских регионах полный комплекс работ по проектированию инженерных систем зданий и сооружений, включая все проектные стадии. Коллектив квалифицированных специалистов нашей фирмы имеет большой опыт выполнения сложных инновационных проектов. В процессе совместной работы с немецкими специалистами наши сотрудники постоянно совершенствуют свои знания, участвуя в совместных разработках и используя новейшие технические решения. Начиная с 2000 года наши специалисты совместно с немецкими коллегами разработали более 100 российских и интернациональных проектов.",
-        departments: [
-            'Испания – Памплона',
-            'Китай – Чаньчунь',
-            'Мексика – Пуэбла',
-            'ОАЭ – Абу-Даби',
-            'Польша – Познань',
-            'Германия – Берлин, Зальцгиттер, Гамбург, Штутгарт, Бремен, Вольфсбург, Хемниц, Целле, Бергиш-Гладбах'
+        department: [
+            {
+                id: 1,
+                companyId: 1,
+                department: 'Испания – Памплона'
+            },
+            {
+                id: 2,
+                companyId: 1,
+                department: 'Китай – Чаньчунь'
+            },
+            {
+                id: 3,
+                companyId: 1,
+                department: 'Мексика – Пуэбла'
+            },
+            {
+                id: 4,
+                companyId: 1,
+                department: 'ОАЭ – Абу-Даби'
+            },
+            {
+                id: 5,
+                companyId: 1,
+                department: 'Польша – Познань'
+            },
+            {
+                id: 6,
+                companyId: 1,
+                department: 'Германия – Берлин, Зальцгиттер, Гамбург, Штутгарт, Бремен, Вольфсбург, Хемниц, Целле, Бергиш-Гладбах'
+            }
         ]
-    }
+    });
+
+    useEffect(() => {
+        fetchCompany(1).then(data => setCompany(data));
+    }, []);
+
 
     return (
         <div className='description'>
@@ -37,15 +66,9 @@ const MainDescr: React.FC = () => {
 
             <h3 className="description__title">Отделения и филиалы</h3>
             <ul className="description__list">
-                {company.departments && company.departments.map((item, i) =>
-                    <li key={i}>{item}</li>    
+                {company.department && company.department.map(item =>
+                    <li key={item.id}>{item.department}</li>    
                 )}
-                {/* <li>Испания – Памплона</li>
-                <li>Китай – Чаньчунь</li>
-                <li>Мексика – Пуэбла</li>
-                <li>ОАЭ – Абу-Даби</li>
-                <li>Польша – Познань</li>
-                <li>Германия – Берлин, Зальцгиттер, Гамбург, Штутгарт, Бремен, Вольфсбург, Хемниц, Целле, Бергиш-Гладбах</li> */}
             </ul>
 
             <h3 className="description__title">Членство в ФСРП России и российско-германской ВТП / Награды и достижения</h3>
