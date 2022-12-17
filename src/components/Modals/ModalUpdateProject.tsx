@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-import { createProject } from '../../http/projectAPI';
-import { IVolume, IInform } from '../../types/types';
+import { updateProject } from '../../http/projectAPI';
+import { IVolume, IInform, IProject } from '../../types/types';
 import CUProject from '../CUProject';
 
-interface ModalAddProjectProps {
+interface ModalUpdateProjectProps {
     show: boolean;
     onHide: () => void;
+    project: IProject;
 };
 
 
-const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
+const ModalUpdateProject: React.FC<ModalUpdateProjectProps> = ({show, onHide, project}) => {
     const [name, setName] = useState<string>('');    
     const [task, setTask] = useState<string>(''); 
     const [location, setLocation] = useState<string>('');    
@@ -23,9 +24,23 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
     // @ts-ignore
     const [photo, setPhoto] = useState<FileList>([]);
 
+    useEffect(() => {
+        setName(project.name);
+        setTask(project.task);
+        setLocation(project.location);
+        setCategory(project.category);
+        setCustomer(project.customer);
+        setDesigner(project.designer);
+        setPeriod(project.period);
+        setVolume(project.volume);
+        setInform(project.inform);
+        setPhoto(project.photo);
+    }, [show]);
+
+
     return (
         <CUProject
-            id={0}
+            id={project.id}
             name={name}
             task={task}
             location={location}
@@ -47,13 +62,13 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
             setInform={setInform}
             setPhoto={setPhoto}
             // @ts-ignore
-            handler={createProject}
-            modalTitle='Добавить новый проект'
-            btnName='Добавить'
+            handler={updateProject}
+            modalTitle='Обновить проект'
+            btnName='Обновить'
             show={show}
             onHide={onHide}
         />
     );
 };
 
-export default ModalAddProject;
+export default ModalUpdateProject;

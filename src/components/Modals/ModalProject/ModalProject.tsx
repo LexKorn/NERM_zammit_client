@@ -2,8 +2,9 @@ import React, {useState, useContext} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
 import { IProject } from '../../../types/types';
-import SliderModify from '../../Slider/SliderModify';
 import { Context } from '../../..';
+import { deleteProject } from '../../../http/projectAPI';
+import SliderModify from '../../Slider/SliderModify';
 
 import './modalProject.sass';
 
@@ -16,6 +17,21 @@ interface ModalProjectProps {
 
 const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
     const {admin} = useContext(Context);
+    const [projectUpdateVisible, setProjectUpdateVisible] = useState<boolean>(false);
+
+    const removeProject = () => {
+        if (window.confirm('Вы действительно хотите удалить проект?')) {
+            deleteProject(project.id);
+            onHide();
+        }        
+    };
+
+    const editProject = () => {
+        if(window.confirm('Вы действительно хотите изменить проект?')) {
+            setProjectUpdateVisible(true);
+        }
+    };
+
     
     return (
         <Modal
@@ -63,12 +79,13 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
             <Modal.Footer>
                 {admin.isAuth &&
                     <div>
-                        <Button variant={"outline-danger "} onClick={onHide}>Удалить</Button>
-                        <Button variant={"outline-primary "} style={{marginLeft: 10}} onClick={onHide}>Обновить</Button>
+                        <Button variant={"outline-danger "} onClick={removeProject}>Удалить</Button>
+                        <Button variant={"outline-primary "} style={{marginLeft: 10}} onClick={editProject}>Обновить</Button>
                     </div>
                 }
                 <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
+            {/* <ModalUpdateProject show={projectUpdateVisible} onHide={() => setProjectUpdateVisible(false)} project={project}  /> */}
         </Modal>
     );
 };

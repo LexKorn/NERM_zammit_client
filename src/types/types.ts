@@ -40,6 +40,16 @@ export interface IInfoVolume {
     volume: string;
 };
 
+export interface IInform {
+    id: number;
+    inform: string;
+};
+
+export interface IVolume {
+    id: number;
+    volume: string;
+};
+
 export interface IInfo {
     id: number;
     customer: string;

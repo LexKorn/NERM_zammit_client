@@ -6,7 +6,6 @@ import { IProject, Categories } from '../types/types';
 import { fetchProjects } from '../http/projectAPI';
 import ModalProject from '../components/Modals/ModalProject/ModalProject';
 import ProjectContainer from '../components/ProjectContainer/ProjectContainer';
-// import {ice1, kinoEkrn, angara1, epsilon1 } from '../assets/img/projects/index';
 
 
 const ProjectsPage: React.FC = () => {
@@ -20,7 +19,7 @@ const ProjectsPage: React.FC = () => {
             setProjects(data);
             setLoading(false);
         })
-    }, []);
+    }, [visible]);
 
     const handler = (project: IProject) => {
         setVisible(true);

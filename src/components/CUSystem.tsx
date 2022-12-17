@@ -18,11 +18,6 @@ interface CUSystemProps {
 
 
 const CUSystem: React.FC<CUSystemProps> = ({id, title, description, photo, setTitle, setDescription, setPhoto, handler, modalTitle, btnName, show, onHide}) => {
-    // const [title, setTitle] = useState<string>('');    
-    // const [description, setDescription] = useState<string>(''); 
-    // // @ts-ignore
-    // const [photo, setPhoto] = useState<FileList>([]);
-
     const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const files: FileList | null = e.target.files;
         if (files) {
