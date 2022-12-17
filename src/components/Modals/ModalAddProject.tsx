@@ -25,6 +25,7 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
     const [task, setTask] = useState<string>(''); 
     const [location, setLocation] = useState<string>('');    
     const [category, setCategory] = useState<string>(''); 
+    // const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [customer, setCustomer] = useState<string>('');    
     const [designer, setDesigner] = useState<string>(''); 
     const [period, setPeriod] = useState<string>(''); 
@@ -139,12 +140,12 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
                     />
 
                     <Dropdown className="mt-3 mb-3">
-                        <Dropdown.Toggle variant={"outline-dark"}>Выберите категорию объекта</Dropdown.Toggle>
+                        <Dropdown.Toggle variant={"outline-dark"}>{category || 'Выберите категорию объекта'}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {/* @ts-ignore */}
                             {Object.values(Categories).map(category => 
                                 <Dropdown.Item 
-                                    // onClick={() => library.setSelectedCategory(category)} 
+                                    onClick={() => setCategory(category)} 
                                     key={category} >
                                         {category}
                                 </Dropdown.Item>                                

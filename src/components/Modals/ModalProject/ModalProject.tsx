@@ -33,7 +33,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 {project.task} <br/>
                 {project.location}
                 <div className="modal-project">
-                    {project.photos && <SliderModify photos={project.photos} />}
+                    {project.photo && <SliderModify photos={project.photo} />}
                     {project.info && <div className="modal-project__info">
                         <div className='modal-project__info_1'>Заказчик:</div>
                         <div className='modal-project__info_1'>{project.info.customer}</div>
@@ -44,7 +44,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                         <div className='modal-project__info_2'>Объемы проектирования:</div>
                         <div className='modal-project__info_2'>
                             <ul className='modal-project__info_list'>
-                                {project.info.volumes.map(item => 
+                                {project.info.volume.map(item => 
                                     <li key={item.id}>{item.volume}</li>
                                 )}
                             </ul>
@@ -52,7 +52,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                         <div className='modal-project__info_1'>Проектные данные:</div>
                         <div className='modal-project__info_1'>
                             <ul className='modal-project__info_list'>
-                                {project.info.informs.map(item => 
+                                {project.info.inform.map(item => 
                                     <li key={item.id}>{item.inform}</li>
                                 )}
                             </ul>

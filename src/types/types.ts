@@ -45,8 +45,8 @@ export interface IInfo {
     customer: string;
     designer?: string;
     period: string;
-    volumes: IInfoVolume[];
-    informs: IInfoInform[];
+    volume: IInfoVolume[];
+    inform: IInfoInform[];
 };
 
 export interface IProjectPhoto {
@@ -62,7 +62,7 @@ export interface IProject {
     location: string;    
     category: string;
     info: IInfo;
-    photos: IProjectPhoto[];
+    photo: IProjectPhoto[];
 };
 
 export interface IServise {
