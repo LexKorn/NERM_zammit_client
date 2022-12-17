@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { updateProject } from '../../http/projectAPI';
-import { IVolume, IInform, IProject } from '../../types/types';
+import { IVolume, IInform, IProject, IProjectPhoto } from '../../types/types';
 import CUProject from '../CUProject';
 
 interface ModalUpdateProjectProps {
@@ -22,18 +22,18 @@ const ModalUpdateProject: React.FC<ModalUpdateProjectProps> = ({show, onHide, pr
     const [volume, setVolume] = useState<IVolume[]>([]);
     const [inform, setInform] = useState<IInform[]>([]);
     // @ts-ignore
-    const [photo, setPhoto] = useState<FileList>([]);
+    const [photo, setPhoto] = useState<IProjectPhoto[]>([]);
 
     useEffect(() => {
         setName(project.name);
         setTask(project.task);
         setLocation(project.location);
         setCategory(project.category);
-        setCustomer(project.customer);
-        setDesigner(project.designer);
-        setPeriod(project.period);
-        setVolume(project.volume);
-        setInform(project.inform);
+        setCustomer(project.info.customer);
+        setDesigner(project.info.designer);
+        setPeriod(project.info.period);
+        setVolume(project.info.volume);
+        setInform(project.info.inform);
         setPhoto(project.photo);
     }, [show]);
 

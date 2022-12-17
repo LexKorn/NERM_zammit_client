@@ -53,7 +53,7 @@ export interface IVolume {
 export interface IInfo {
     id: number;
     customer: string;
-    designer?: string;
+    designer: string;
     period: string;
     volume: IInfoVolume[];
     inform: IInfoInform[];

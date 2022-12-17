@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import { createProject } from '../../http/projectAPI';
-import { IVolume, IInform } from '../../types/types';
+import { IVolume, IInform, IProjectPhoto } from '../../types/types';
 import CUProject from '../CUProject';
 
 interface ModalAddProjectProps {
@@ -21,7 +21,7 @@ const ModalAddProject: React.FC<ModalAddProjectProps> = ({show, onHide}) => {
     const [volume, setVolume] = useState<IVolume[]>([]);
     const [inform, setInform] = useState<IInform[]>([]);
     // @ts-ignore
-    const [photo, setPhoto] = useState<FileList>([]);
+    const [photo, setPhoto] = useState<IProjectPhoto[]>([]);
 
     return (
         <CUProject

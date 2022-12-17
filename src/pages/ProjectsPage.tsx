@@ -26,6 +26,7 @@ const ProjectsPage: React.FC = () => {
         setProject(project);
     };
 
+
     return (
         <Container style={{flex: 1}}>
             <Helmet>

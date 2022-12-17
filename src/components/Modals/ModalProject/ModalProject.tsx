@@ -5,6 +5,7 @@ import { IProject } from '../../../types/types';
 import { Context } from '../../..';
 import { deleteProject } from '../../../http/projectAPI';
 import SliderModify from '../../Slider/SliderModify';
+import ModalUpdateProject from '../ModalUpdateProject';
 
 import './modalProject.sass';
 
@@ -85,7 +86,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 }
                 <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
-            {/* <ModalUpdateProject show={projectUpdateVisible} onHide={() => setProjectUpdateVisible(false)} project={project}  /> */}
+            <ModalUpdateProject show={projectUpdateVisible} onHide={() => setProjectUpdateVisible(false)} project={project}  />
         </Modal>
     );
 };

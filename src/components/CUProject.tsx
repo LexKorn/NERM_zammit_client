@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, Button, Form, Row, Col, Dropdown} from 'react-bootstrap';
 
-import {Categories, IVolume, IInform} from '../types/types';
+import {Categories, IVolume, IInform, IProjectPhoto} from '../types/types';
 
 interface CUProjectProps {
     id: number;
@@ -14,7 +14,7 @@ interface CUProjectProps {
     period: string;
     volume: IVolume[];
     inform: IInform[];
-    photo: FileList;
+    photo: IProjectPhoto[];
     setName: (name: string) => void;
     setTask: (task: string) => void;
     setLocation: (location: string) => void;
@@ -24,7 +24,7 @@ interface CUProjectProps {
     setPeriod: (period: string) => void;
     setVolume: (volume: IVolume[]) => void;
     setInform: (inform: IInform[]) => void;
-    setPhoto: (photo: FileList) => void;
+    setPhoto: (photo: IProjectPhoto[]) => void;
     handler: (id: number, project: FormData) => Promise<unknown>;
     modalTitle: string;
     btnName: string;
@@ -73,6 +73,7 @@ const CUProject: React.FC<CUProjectProps> = ({id, name, task, location, category
     const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const files: FileList | null = e.target.files;
         if (files) {
+            // @ts-ignore
             setPhoto(files);
         }        
     };
@@ -100,6 +101,7 @@ const CUProject: React.FC<CUProjectProps> = ({id, name, task, location, category
         formData.append('inform', JSON.stringify(inform));
 
         for (let i = 0; i < photo.length; i++) {
+            // @ts-ignore
             formData.append('photo', photo[i]);
         }
 
