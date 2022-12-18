@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import {updateSystem} from '../../http/systemAPI';
-import { ISystem } from '../../types/types';
+import { ISystem, IDescription } from '../../types/types';
 import CUSystem from '../CUSystem';
 
 interface ModalUpdateSystemProps {
@@ -13,7 +13,7 @@ interface ModalUpdateSystemProps {
 
 const ModalUpdateSystem: React.FC<ModalUpdateSystemProps> = ({show, onHide, system}) => {
     const [title, setTitle] = useState<string>('');    
-    const [description, setDescription] = useState<string>(''); 
+    const [description, setDescription] = useState<IDescription[]>([]); 
     // @ts-ignore
     const [photo, setPhoto] = useState<FileList>([]);
 

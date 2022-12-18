@@ -1,15 +1,13 @@
 import React from 'react';
-import {Modal, Button, Form, Row, Col} from 'react-bootstrap';
-
-import { IDescription } from '../types/types';
+import {Modal, Button, Form} from 'react-bootstrap';
 
 interface CUSystemProps {
     id: number;
     title: string;
-    description: IDescription[];
+    description: string;
     photo: FileList;
     setTitle: (title: string) => void;
-    setDescription: (description: IDescription[]) => void;
+    setDescription: (description: string) => void;
     setPhoto: (photo: FileList) => void;
     handler: (id: number, system: FormData) => Promise<unknown>;
     modalTitle: string;
@@ -20,19 +18,6 @@ interface CUSystemProps {
 
 
 const CUSystem: React.FC<CUSystemProps> = ({id, title, description, photo, setTitle, setDescription, setPhoto, handler, modalTitle, btnName, show, onHide}) => {
-
-    const addDescription = () => {
-        setDescription([...description, {description: '', id: Date.now()}]);
-    };
-
-    const removeDescription = (id: number) => {
-        setDescription(description.filter(item => item.id !== id));
-    };
-
-    const changeDescription = (key: string, value: string, id: number) => {
-        setDescription(description.map(item => item.id === id ? {...item, [key]: value} : item));
-    };
-
     const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const files: FileList | null = e.target.files;
         if (files) {
@@ -41,17 +26,15 @@ const CUSystem: React.FC<CUSystemProps> = ({id, title, description, photo, setTi
     };
 
     const onClick = () => {
-        if (!title.trim()) {
-            return alert('Название системы обязательно для заполнения');
-        } else if (description.length === 0) {
-            return alert('Описание системы обязательно для заполнения');
+        if (!title.trim() || !description.trim()) {
+            return alert('Все поля обязательны для заполнения');
         } else if (photo.length === 0) {
             return alert('Изображение необходимо загрузить');
         }
 
         const formData = new FormData();
         formData.append('title', title);
-        formData.append('description', JSON.stringify(description));
+        formData.append('description', description);
         for (let i = 0; i < photo.length; i++) {
             formData.append('photo', photo[i]);
         }
@@ -62,7 +45,7 @@ const CUSystem: React.FC<CUSystemProps> = ({id, title, description, photo, setTi
                 .then(() => {
                     onHide();
                     setTitle('');
-                    setDescription([]);
+                    setDescription('');
                     // @ts-ignore
                     setPhoto([]);
                 })
@@ -72,7 +55,7 @@ const CUSystem: React.FC<CUSystemProps> = ({id, title, description, photo, setTi
                 .then(() => {
                     onHide();
                     setTitle('');
-                    setDescription([]);
+                    setDescription('');
                     // @ts-ignore
                     setPhoto([]);
                 })
@@ -102,33 +85,13 @@ const CUSystem: React.FC<CUSystemProps> = ({id, title, description, photo, setTi
                         onChange={e => setTitle(e.target.value)}
                         placeholder="Введите название системы"
                     />
-
-                    <Button 
-                        className="mt-3 w-100"
-                        variant="outline-secondary"
-                        onClick={addDescription}
-                        >Добавить описание системы
-                    </Button>
-                    {description && description.map(item =>
-                        <Row className="mt-3" key={item.id}>
-                            <Col md={9}>
-                                <Form.Control as="textarea"
-                                    value={item.description}
-                                    onChange={e => changeDescription('description', e.target.value, item.id)}
-                                    placeholder="Введите описание"
-                                    maxLength={700}
-                                />
-                            </Col>
-                            <Col md={3}>
-                                <Button 
-                                    variant="outline-danger"
-                                    onClick={() => removeDescription(item.id)}
-                                    >Удалить
-                                </Button>
-                            </Col>
-                        </Row>    
-                    )}
-
+                    <Form.Control as="textarea"
+                        className="mt-3"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        placeholder="Введите описание системы"
+                        maxLength={700}
+                    />
                     <label htmlFor="file" className="mt-3">Загрузите изображения</label>       
                     <Form.Control                        
                         type="file"

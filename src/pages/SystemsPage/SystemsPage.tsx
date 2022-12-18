@@ -54,7 +54,12 @@ const SystemsPage: React.FC = () => {
                             <Accordion.Header>{item.title}</Accordion.Header>
                             <Accordion.Body>
                                 <Slider photos={item.photo} page="systems" />
-                                <p className="systems__text">{item.description}</p>
+                                <ul className="systems__list">
+                                    {item.description && item.description.map(elm =>
+                                        <li key={elm.id}>{elm.description}</li>
+                                    )}
+                                </ul>
+                                {/* <p className="systems__text">{item.description}</p> */}
                                 {admin.isAuth &&
                                     <div style={{marginTop: 15}}>
                                         <Button variant={"outline-danger"} onClick={() => removeSystem(item)} >Удалить</Button>

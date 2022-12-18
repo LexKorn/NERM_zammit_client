@@ -88,6 +88,17 @@ export interface ISlider {
     photo: string;
 };
 
+export interface ISystemDescription {
+    id: number;
+    systemId: number;
+    description: string;
+};
+
+export interface IDescription {
+    id: number;
+    description: string;
+};
+
 export interface ISystemPhoto {
     id: number;
     systemId: number;
@@ -97,7 +108,7 @@ export interface ISystemPhoto {
 export interface ISystem {
     id: number;
     title: string;
-    description: string;
+    description: ISystemDescription[];
     photo: ISystemPhoto[];
 };
 
