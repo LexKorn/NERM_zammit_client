@@ -3,39 +3,42 @@ import {Modal, Button, Form} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import { AxiosError } from 'axios';
 
-import {ADMIN_ROUTE} from '../../utils/consts';
+import {MAIN_ROUTE} from '../../utils/consts';
 import {Context} from '../..';
-import {login} from '../../http/adminAPI';
+import {updateLogin} from '../../http/adminAPI';
 
-interface ModalLoginProps {
+interface ModalLoginUpdateProps {
     show: boolean;
     onHide: () => void;
 };
 
 
-const ModalLogin: React.FC<ModalLoginProps> = ({show, onHide}) => {
+const ModalLoginUpdate: React.FC<ModalLoginUpdateProps> = ({show, onHide}) => {
     const {admin} = useContext(Context);
     const navigate = useNavigate();
-    const [email, setEmail] = useState<string>('');
+    // const [email, setEmail] = useState<string>(admin.email);
     const [password, setPassword] = useState<string>('');
+    const [passwordR, setPasswordR] = useState<string>('');
+
+    const email: string = admin.email;
 
     const loginHandler = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-            await login(email, password).then(data => {
-                // @ts-ignore
-                admin.setId(data.id);
-                // @ts-ignore
-                admin.setEmail(data.email);
-            });
-            admin.setIsAuth(true);
-            onHide();
-            navigate(ADMIN_ROUTE);
 
-        } catch (err: unknown) {
-            const error = err as AxiosError;
-            alert(JSON.parse(error.request.response).message);
-        }        
+        if (password === passwordR) {
+            try {
+                await updateLogin(email, password, admin.id);
+                admin.setIsAuth(false);
+                onHide();
+                navigate(MAIN_ROUTE);
+    
+            } catch (err: unknown) {
+                const error = err as AxiosError;
+                alert(JSON.parse(error.request.response).message);
+            } 
+        } else {
+            alert('Пароли не совпали. Повторите попытку')
+        }               
     };
 
     return (
@@ -48,7 +51,7 @@ const ModalLogin: React.FC<ModalLoginProps> = ({show, onHide}) => {
             >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Вход для адмиистратора
+                    Сменить пароль
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -58,13 +61,13 @@ const ModalLogin: React.FC<ModalLoginProps> = ({show, onHide}) => {
                         <Form.Control 
                             type="email" 
                             value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            placeholder="Enter email" 
+                            readOnly
+                            // onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Новый пароль</Form.Label>
                         <Form.Control 
                             type="password" 
                             value={password}
@@ -72,8 +75,19 @@ const ModalLogin: React.FC<ModalLoginProps> = ({show, onHide}) => {
                             placeholder="Enter password" 
                         />
                     </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Повторите новый пароль</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            value={passwordR}
+                            onChange={e => setPasswordR(e.target.value)}
+                            placeholder="Enter password" 
+                        />
+                    </Form.Group>
+
                     <Button variant="primary" type="submit" onClick={(e) => loginHandler(e)}>
-                        Войти
+                        Обновить
                     </Button>
                 </Form>
             </Modal.Body>
@@ -84,4 +98,4 @@ const ModalLogin: React.FC<ModalLoginProps> = ({show, onHide}) => {
     );
 };
 
-export default ModalLogin;
+export default ModalLoginUpdate;

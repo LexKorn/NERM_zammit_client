@@ -10,6 +10,7 @@ import ModalAddSystem from '../components/Modals/ModalAddSystem';
 import ModalAddVacancy from '../components/Modals/ModalAddVacancy';
 import ModalEditCompany from '../components/Modals/ModalEditCompany';
 import ModalEditContacts from '../components/Modals/ModalEditContacts';
+import ModalLoginUpdate from '../components/Modals/ModalLoginUpdate';
 import {Context} from '../';
 import {MAIN_ROUTE} from '../utils/consts';
 
@@ -22,6 +23,7 @@ const AdminPage: React.FC = () => {
     const [sliderVisible, setSliderVisible] = useState<boolean>(false);
     const [systemVisible, setSystemVisible] = useState<boolean>(false);
     const [vacancyVisible, setVacancyVisible] = useState<boolean>(false);
+    const [loginVisible, setLoginVisible] = useState<boolean>(false);
 
     const {admin} =useContext(Context);
     const navigate = useNavigate();
@@ -87,14 +89,24 @@ const AdminPage: React.FC = () => {
                 >
                 Добавить вакансию
             </Button>
-            <Button 
-                variant={"secondary"} 
-                className="mt-4 p-2"
-                style={{width: 100}}
-                onClick={logOut}
-                >
-                Выйти
-            </Button>
+            <div>
+                <Button 
+                    variant={"secondary"} 
+                    className="mt-4 p-2"
+                    style={{width: 100}}
+                    onClick={logOut}
+                    >
+                    Выйти
+                </Button>
+                <Button 
+                    variant={"outline-secondary"} 
+                    className="mt-4 p-2 ms-3"
+                    onClick={() => setLoginVisible(true)}
+                    >
+                    Сменить пароль
+                </Button>
+            </div>
+            
             <ModalAddProject show={projectVisible} onHide={() => setProjectVisible(false)} />        
             <ModalAddServise show={serviseVisible} onHide={() => setServiseVisible(false)} /> 
             <ModalAddSlider show={sliderVisible} onHide={() => setSliderVisible(false)} />
@@ -102,6 +114,7 @@ const AdminPage: React.FC = () => {
             <ModalAddVacancy show={vacancyVisible} onHide={() => setVacancyVisible(false)} />
             <ModalEditCompany show={companyVisible} onHide={() => setCompanyVisible(false)} />
             <ModalEditContacts show={contactsVisible} onHide={() => setContactsVisible(false)} />
+            <ModalLoginUpdate show={loginVisible} onHide={() => setLoginVisible(false)} />
         </Container>
     );
 };

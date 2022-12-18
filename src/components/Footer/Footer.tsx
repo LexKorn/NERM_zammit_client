@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 import ModalLogin from '../Modals/ModalLogin';
+import { Context } from '../..';
 
 import './footer.sass';
 
 
 const Footer: React.FC = () => {
+    const {admin} = useContext(Context);
     const [visible, setVisible] = useState<boolean>(false);
 
     const loginHandler = () => {
-        setVisible(true);
+        if (!admin.isAuth) {
+            setVisible(true);
+        }        
     };
 
     return (
