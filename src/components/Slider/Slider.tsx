@@ -1,63 +1,30 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
+import { ISystemPhoto, IProjectPhoto } from '../../types/types';
+
 import './slider.sass';
 
 interface SliderProps {
-    slide1: string;
-    slide2?: string;
-    slide3?: string;
-    slide4?: string;
-    slide5?: string;
+    photos: (ISystemPhoto | IProjectPhoto)[];
+    page: string;
 };
 
 
-const Slider: React.FC<SliderProps> = ({slide1, ...props}) => {
+const Slider: React.FC<SliderProps> = ({photos, page}) => {
+
     return (
-        <Carousel variant="dark" interval={null}>
-            <Carousel.Item>
-                <img
-                className='slider-item'
-                src={slide1}
-                alt="First slide"
-                />
-            </Carousel.Item>
-            {props.slide2 &&
-                <Carousel.Item>
+        <Carousel variant={page === "systems" ? "dark" : ""} interval={null}>
+            {photos && photos.map(item =>
+                <Carousel.Item key={item.id}>
                     <img
-                    className='slider-item'
-                    src={props.slide2}
-                    alt="First slide"
+                        className='slider-item'
+                        style={{objectFit: page === "systems" ? "contain" : "cover"}}
+                        src={process.env.REACT_APP_API_URL + item.photo}
+                        alt={`image ${item.id}`}
                     />
                 </Carousel.Item>
-            }
-            {props.slide3 &&
-                <Carousel.Item>
-                    <img
-                    className='slider-item'
-                    src={props.slide3}
-                    alt="First slide"
-                    />
-                </Carousel.Item>
-            }
-            {props.slide4 &&
-                <Carousel.Item>
-                    <img
-                    className='slider-item'
-                    src={props.slide4}
-                    alt="First slide"
-                    />
-                </Carousel.Item>
-            }
-            {props.slide5 &&
-                <Carousel.Item>
-                    <img
-                    className='slider-item'
-                    src={props.slide5}
-                    alt="First slide"
-                    />
-                </Carousel.Item>
-            }
+            )}
         </Carousel>
     );
 };

@@ -34,7 +34,6 @@ const ModalUpdateProject: React.FC<ModalUpdateProjectProps> = ({show, onHide, pr
         setPeriod(project.info.period);
         setVolume(project.info.volume);
         setInform(project.info.inform);
-        setPhoto(project.photo);
     }, [show]);
 
 

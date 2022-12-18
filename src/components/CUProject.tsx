@@ -34,18 +34,6 @@ interface CUProjectProps {
 
 
 const CUProject: React.FC<CUProjectProps> = ({id, name, task, location, category, customer, designer, period, volume, inform, photo, setName, setTask, setLocation, setCategory, setCustomer, setDesigner, setPeriod, setVolume, setInform, setPhoto, handler, modalTitle, btnName, show, onHide}) => {
-    // const [name, setName] = useState<string>('');    
-    // const [task, setTask] = useState<string>(''); 
-    // const [location, setLocation] = useState<string>('');    
-    // const [category, setCategory] = useState<string>('');
-    // const [customer, setCustomer] = useState<string>('');    
-    // const [designer, setDesigner] = useState<string>(''); 
-    // const [period, setPeriod] = useState<string>(''); 
-    // const [volume, setVolume] = useState<IVolume[]>([]);
-    // const [inform, setInform] = useState<IInform[]>([]);
-    // // @ts-ignore
-    // const [photo, setPhoto] = useState<FileList>([]);
-
     const addVolume = () => {
         setVolume([...volume, {volume: '', id: Date.now()}]);
     };

@@ -4,7 +4,7 @@ import {Modal, Button} from 'react-bootstrap';
 import { IProject } from '../../../types/types';
 import { Context } from '../../..';
 import { deleteProject } from '../../../http/projectAPI';
-import SliderModify from '../../Slider/SliderModify';
+import Slider from '../../Slider/Slider';
 import ModalUpdateProject from '../ModalUpdateProject';
 
 import './modalProject.sass';
@@ -50,7 +50,7 @@ const ModalProject: React.FC<ModalProjectProps> = ({show, onHide, project}) => {
                 {project.task} <br/>
                 {project.location}
                 <div className="modal-project">
-                    {project.photo && <SliderModify photos={project.photo} />}
+                    {project.photo && <Slider photos={project.photo} page="projects" />}
                     {project.info && <div className="modal-project__info">
                         <div className='modal-project__info_1'>Заказчик:</div>
                         <div className='modal-project__info_1'>{project.info.customer}</div>

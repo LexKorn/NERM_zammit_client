@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {Accordion, Container, Button, Spinner} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
-import SliderModify from '../../components/Slider/SliderModify';
+import Slider from '../../components/Slider/Slider';
 import ModalUpdateSystem from '../../components/Modals/ModalUpdateSystem';
 import { ISystem } from '../../types/types';
 import { Context } from '../..';
@@ -53,7 +53,7 @@ const SystemsPage: React.FC = () => {
                         <Accordion.Item eventKey={`${item.id}`} key={item.id}>
                             <Accordion.Header>{item.title}</Accordion.Header>
                             <Accordion.Body>
-                                <SliderModify photos={item.photo} />
+                                <Slider photos={item.photo} page="systems" />
                                 <p className="systems__text">{item.description}</p>
                                 {admin.isAuth &&
                                     <div style={{marginTop: 15}}>

@@ -20,8 +20,14 @@ const MainSlider: React.FC = () => {
         fetchSliders().then(data => {
             setSliders(data);
             setLoading(false);
-        });
+        });        
     }, [toggle]);
+
+    useEffect(() => {
+        if (sliders.length > 0) {
+            setActiveId(`${sliders[2].id}`);
+        }
+    }, [sliders]);
 
     const mouseHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         setActiveId('');
