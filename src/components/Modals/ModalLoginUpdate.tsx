@@ -16,7 +16,6 @@ interface ModalLoginUpdateProps {
 const ModalLoginUpdate: React.FC<ModalLoginUpdateProps> = ({show, onHide}) => {
     const {admin} = useContext(Context);
     const navigate = useNavigate();
-    // const [email, setEmail] = useState<string>(admin.email);
     const [password, setPassword] = useState<string>('');
     const [passwordR, setPasswordR] = useState<string>('');
 
@@ -62,7 +61,6 @@ const ModalLoginUpdate: React.FC<ModalLoginUpdateProps> = ({show, onHide}) => {
                             type="email" 
                             value={email}
                             readOnly
-                            // onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
 

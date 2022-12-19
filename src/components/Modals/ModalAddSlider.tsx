@@ -77,8 +77,8 @@ const ModalAddSlider: React.FC<ModalAddSliderProps> = ({show, onHide}) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant={"outline-success "} onClick={addSlider}>Добавить</Button>
-                <Button variant={"outline-secondary "} onClick={onHide}>Закрыть</Button>
+                <Button variant={"outline-success"} onClick={addSlider}>Добавить</Button>
+                <Button variant={"outline-secondary"} onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>
     );

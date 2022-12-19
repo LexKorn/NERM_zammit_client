@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 import ank from '../../assets/icons/ank.jpg';
-import license from '../../assets/img/main/license.jpg';
+import license from '../../assets/img/license.jpg';
 import { ICompany } from '../../types/types';
 import { fetchCompany } from '../../http/companyAPI';
 

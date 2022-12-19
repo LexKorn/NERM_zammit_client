@@ -132,10 +132,11 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                     {duty.map(item =>
                         <Row className="mt-3" key={item.id}>
                             <Col md={9}>
-                                <Form.Control 
+                                <Form.Control as="textarea"
                                     value={item.duty}
                                     onChange={e => changeDuty('duty', e.target.value, item.id)}
                                     placeholder="Введите обязанность"
+                                    maxLength={500}
                                 />
                             </Col>
                             <Col md={3}>
@@ -157,10 +158,11 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                     {requirement.map(item =>
                         <Row className="mt-3" key={item.id}>
                             <Col md={9}>
-                                <Form.Control 
+                                <Form.Control as="textarea"
                                     value={item.requirement}
                                     onChange={e => changeRequirement('requirement', e.target.value, item.id)}
                                     placeholder="Введите требование"
+                                    maxLength={500}
                                 />
                             </Col>
                             <Col md={3}>
@@ -182,10 +184,11 @@ const CUVacancy: React.FC<CUVacancyProps> = ({id, name, condition, duty, require
                     {condition.map(item =>
                         <Row className="mt-3" key={item.id}>
                             <Col md={9}>
-                                <Form.Control 
+                                <Form.Control as="textarea"
                                     value={item.condition}
                                     onChange={e => changeCondition('condition', e.target.value, item.id)}
                                     placeholder="Введите условие"
+                                    maxLength={500}
                                 />
                             </Col>
                             <Col md={3}>

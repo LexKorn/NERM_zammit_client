@@ -59,7 +59,6 @@ const SystemsPage: React.FC = () => {
                                         <li key={elm.id}>{elm.description}</li>
                                     )}
                                 </ul>
-                                {/* <p className="systems__text">{item.description}</p> */}
                                 {admin.isAuth &&
                                     <div style={{marginTop: 15}}>
                                         <Button variant={"outline-danger"} onClick={() => removeSystem(item)} >Удалить</Button>
